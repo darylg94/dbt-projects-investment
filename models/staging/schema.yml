@@ -1,0 +1,69 @@
+version: 2
+
+sources:
+  - name: raw
+    database: raw  # Update this to match your Snowflake database name
+    schema: far_trans  # Update this to match your Snowflake schema name
+    tables:
+      - name: asset_information
+        description: Raw asset information data
+        columns:
+          - name: isin
+            description: International Securities Identification Number
+            tests:
+              - not_null
+              - unique
+          - name: assetname
+            description: Full name of the asset
+          - name: assetshortname
+            description: Short name/symbol of the asset
+          - name: assetcategory
+            description: Category of the asset (Stock, Bond, MTF)
+          - name: assetsubcategory
+            description: Sub-category of the asset
+          - name: marketid
+            description: Market identifier
+          - name: sector
+            description: Business sector
+          - name: industry
+            description: Specific industry
+          - name: timestamp
+            description: Record validity timestamp
+
+      - name: close_prices
+        description: Daily closing prices for assets
+        columns:
+          - name: isin
+            description: International Securities Identification Number
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw', 'asset_information')
+                  field: isin
+          - name: timestamp
+            description: Price date
+            tests:
+              - not_null
+          - name: closeprice
+            description: Closing price
+            tests:
+              - not_null
+
+      - name: customer_information
+        description: Customer profile and risk information
+        columns:
+          - name: customerid
+            description: Unique customer identifier
+            tests:
+              - not_null
+              - unique
+          - name: customertype
+            description: Type of customer (Premium, Mass)
+          - name: risklevel
+            description: Customer's risk tolerance level
+          - name: investmentcapacity
+            description: Investment capacity category
+          - name: lastquestionnairedate
+            description: Date of last risk questionnaire completion
+          - name: timestamp
+            description: Record validity timestamp
