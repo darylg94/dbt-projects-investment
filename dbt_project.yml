@@ -22,9 +22,50 @@ models:
     staging:
       +materialized: view
       +schema: staging
+      +tags: ["staging"]
+    
     intermediate:
       +materialized: table
       +schema: intermediate
+      +tags: ["intermediate"]
+      market_analysis:
+        +materialized: table
+        +schema: intermediate
+        +tags: ["market", "analysis"]
+      risk_analysis:
+        +materialized: table
+        +schema: intermediate
+        +tags: ["risk", "analysis"]
+    
     marts:
       +materialized: table
       +schema: marts
+      core:
+        +materialized: table
+        +schema: marts
+        +tags: ["core"]
+      risk:
+        +materialized: table
+        +schema: marts
+        +tags: ["risk"]
+      market:
+        +materialized: table
+        +schema: marts
+        +tags: ["market"]
+      customer:
+        +materialized: table
+        +schema: marts
+        +tags: ["customer"]
+
+vars:
+  # Risk tolerance thresholds
+  low_risk_max_score: 2
+  medium_risk_max_score: 6
+  high_risk_max_score: 8
+  
+  # Market analysis parameters
+  price_volatility_window: 30
+  trading_limit_threshold: 0.95
+  
+  # Customer segmentation
+  premium_investment_threshold: 300000

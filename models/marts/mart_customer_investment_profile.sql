@@ -16,3 +16,4 @@ customer_segments as (
 )
 
 select * from customer_segments
+

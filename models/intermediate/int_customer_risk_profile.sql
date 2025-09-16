@@ -28,3 +28,4 @@ risk_scores as (
 )
 
 select * from risk_scores
+

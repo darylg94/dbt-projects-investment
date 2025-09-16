@@ -73,3 +73,4 @@ The project includes the following tests:
 3. Add appropriate tests
 4. Update documentation
 5. Submit a pull request
+

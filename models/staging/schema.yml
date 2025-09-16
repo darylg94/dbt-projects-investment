@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: raw
-    database: raw  # Update this to match your Snowflake database name
-    schema: far_trans  # Update this to match your Snowflake schema name
+    database: FAR_TRANS_DB
+    schema: raw
     tables:
       - name: asset_information
         description: Raw asset information data
@@ -65,5 +65,89 @@ sources:
             description: Investment capacity category
           - name: lastquestionnairedate
             description: Date of last risk questionnaire completion
+          - name: timestamp
+            description: Record validity timestamp
+
+      - name: limit_prices
+        description: Daily price limits for trading assets
+        columns:
+          - name: isin
+            description: International Securities Identification Number
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw', 'asset_information')
+                  field: isin
+          - name: timestamp
+            description: Price date
+            tests:
+              - not_null
+          - name: upper_limit
+            description: Upper price limit for trading
+            tests:
+              - not_null
+          - name: lower_limit
+            description: Lower price limit for trading
+            tests:
+              - not_null
+          - name: currency
+            description: Price currency
+
+      - name: markets
+        description: Market reference data
+        columns:
+          - name: market_id
+            description: Unique market identifier
+            tests:
+              - not_null
+              - unique
+          - name: market_name
+            description: Full market name
+          - name: country
+            description: Country where market operates
+          - name: timezone
+            description: Market timezone
+          - name: opening_time
+            description: Market opening time
+          - name: closing_time
+            description: Market closing time
+          - name: currency
+            description: Base currency for the market
+          - name: is_active
+            description: Whether the market is currently active
+          - name: valid_from
+            description: Record validity start date
+
+      - name: questionnaire
+        description: Customer questionnaire responses
+        columns:
+          - name: questionnaire_id
+            description: Unique questionnaire identifier
+            tests:
+              - not_null
+              - unique
+          - name: customer_id
+            description: Customer identifier
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw', 'customer_information')
+                  field: customerid
+          - name: submission_date
+            description: When the questionnaire was submitted
+          - name: investment_horizon
+            description: Planned investment timeframe
+          - name: risk_tolerance_score
+            description: Calculated risk tolerance score
+          - name: investment_knowledge
+            description: Self-assessed investment knowledge level
+          - name: income_bracket
+            description: Customer's income range
+          - name: investment_goal
+            description: Primary investment objective
+          - name: loss_tolerance
+            description: Maximum acceptable loss percentage
+          - name: preferred_investment_types
+            description: Types of investments preferred
           - name: timestamp
             description: Record validity timestamp

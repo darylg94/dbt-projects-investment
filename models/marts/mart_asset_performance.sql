@@ -24,3 +24,4 @@ asset_stats as (
 )
 
 select * from asset_stats
+
