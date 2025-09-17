@@ -159,5 +159,3 @@ SELECT * FROM raw.asset_information LIMIT 5;
 SELECT * FROM raw.close_prices LIMIT 5;
 SELECT * FROM raw.customer_information LIMIT 5;
 SELECT * FROM raw.transactions LIMIT 5;
-
-SHOW GRANTS ON SCHEMA RAW;
