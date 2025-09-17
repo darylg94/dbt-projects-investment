@@ -5,12 +5,12 @@ with source as (
 renamed as (
     select
         isin,
-        timestamp::timestamp as price_date,
-        upper_limit::decimal(20,4) as upper_limit_price,
-        lower_limit::decimal(20,4) as lower_limit_price,
-        currency
+        minDate::date as min_date,
+        maxDate::date as max_date,
+        priceMinDate::decimal(20,4) as price_min_date,
+        priceMaxDate::decimal(20,4) as price_max_date,
+        profitability::decimal(20,4) as profitability
     from source
 )
 
 select * from renamed
-

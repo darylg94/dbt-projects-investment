@@ -105,50 +105,26 @@ sources:
             description: Market classification
 
       - name: limit_prices
-        description: Price limits for assets
+        description: Price limits and profitability data for assets
         columns:
           - name: isin
             description: International Securities Identification Number
             tests:
               - not_null
-          - name: timestamp
-            description: Price date
-          - name: upper_limit
-            description: Upper price limit
-          - name: lower_limit
-            description: Lower price limit
-          - name: currency
-            description: Currency
+          - name: minDate
+            description: Start date of the period
+          - name: maxDate
+            description: End date of the period
+          - name: priceMinDate
+            description: Price at the start date
+          - name: priceMaxDate
+            description: Price at the end date
+          - name: profitability
+            description: Calculated profitability ratio
 
-      - name: questionnaire
-        description: Customer questionnaire responses
-        columns:
-          - name: questionnaire_id
-            description: Unique questionnaire identifier
-            tests:
-              - not_null
-          - name: customer_id
-            description: Customer identifier
-            tests:
-              - not_null
-          - name: submission_date
-            description: When questionnaire was submitted
-          - name: investment_horizon
-            description: Investment time horizon
-          - name: risk_tolerance_score
-            description: Risk tolerance score
-          - name: investment_knowledge
-            description: Investment knowledge level
-          - name: income_bracket
-            description: Income bracket
-          - name: investment_goal
-            description: Investment goal
-          - name: loss_tolerance
-            description: Loss tolerance percentage
-          - name: preferred_investment_types
-            description: Preferred investment types
-          - name: timestamp
-            description: Record timestamp
+      # - name: questionnaire
+      #   description: Customer questionnaire responses
+      #   Note: Questionnaire data not available in proper CSV format
 
 models:
   - name: stg_asset_information
