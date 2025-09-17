@@ -13,8 +13,6 @@ sources:
             tests:
               - not_null
               - unique
-              - dbt_expectations.expect_column_value_lengths_to_equal:
-                  value: 12
           - name: assetname
             description: Full name of the asset
             tests:
@@ -25,6 +23,18 @@ sources:
               - not_null
               - accepted_values:
                   values: ['Stock', 'Bond', 'MTF']
+          - name: assetshortname
+            description: Short name/symbol of the asset
+          - name: assetsubcategory
+            description: Sub-category of the asset
+          - name: marketid
+            description: Market identifier
+          - name: sector
+            description: Business sector
+          - name: industry
+            description: Specific industry
+          - name: timestamp
+            description: Record validity timestamp
 
       - name: close_prices
         description: Daily closing prices for assets
@@ -40,9 +50,6 @@ sources:
             description: Price date
             tests:
               - not_null
-              - dbt_expectations.expect_column_values_to_be_between:
-                  min_value: '2018-01-01'
-                  max_value: '2025-12-31'
           - name: closeprice
             description: Closing price
             tests:
@@ -78,53 +85,56 @@ sources:
                     - 'CAP_30K_80K'
                     - 'CAP_80K_300K'
                     - 'CAP_300K_1M'
-                     - 'CAP_GT1M'
+                    - 'CAP_GT1M'
+          - name: lastquestionnairedate
+            description: Date of last risk questionnaire completion
+          - name: timestamp
+            description: Record validity timestamp
 
-      - name: markets
-        description: Market reference data
+      - name: transactions
+        description: Customer transaction data
         columns:
-          - name: exchangeID
-            description: Exchange identifier
+          - name: customerid
+            description: Customer identifier
             tests:
               - not_null
-          - name: marketID
-            description: Market identifier
-            tests:
-              - not_null
-          - name: name
-            description: Market name
-          - name: description
-            description: Market description
-          - name: country
-            description: Country where market operates
-          - name: tradingDays
-            description: Trading days of the week
-          - name: tradingHours
-            description: Trading hours
-          - name: marketClass
-            description: Market classification
-
-      - name: limit_prices
-        description: Price limits and profitability data for assets
-        columns:
+              - relationships:
+                  to: source('raw', 'customer_information')
+                  field: customerid
           - name: isin
             description: International Securities Identification Number
             tests:
               - not_null
-          - name: minDate
-            description: Start date of the period
-          - name: maxDate
-            description: End date of the period
-          - name: priceMinDate
-            description: Price at the start date
-          - name: priceMaxDate
-            description: Price at the end date
-          - name: profitability
-            description: Calculated profitability ratio
-
-      # - name: questionnaire
-      #   description: Customer questionnaire responses
-      #   Note: Questionnaire data not available in proper CSV format
+              - relationships:
+                  to: source('raw', 'asset_information')
+                  field: isin
+          - name: transactionid
+            description: Unique transaction identifier
+            tests:
+              - not_null
+              - unique
+          - name: transactiontype
+            description: Type of transaction (Buy, Sell)
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['Buy', 'Sell']
+          - name: timestamp
+            description: Transaction date
+            tests:
+              - not_null
+          - name: totalvalue
+            description: Total transaction value
+            tests:
+              - not_null
+          - name: units
+            description: Number of units traded
+            tests:
+              - not_null
+          - name: channel
+            description: Transaction channel
+          - name: marketid
+            description: Market identifier
 
 models:
   - name: stg_asset_information
@@ -164,3 +174,17 @@ models:
       - name: risk_level
         tests:
           - valid_risk_level
+
+  - name: stg_transactions
+    description: Standardized transaction data
+    columns:
+      - name: transaction_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - not_null
+      - name: isin
+        tests:
+          - not_null

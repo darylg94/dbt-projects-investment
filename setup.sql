@@ -63,10 +63,23 @@ CREATE OR REPLACE TABLE raw.customer_information (
     timestamp TIMESTAMP
 );
 
+CREATE OR REPLACE TABLE raw.transactions (
+    customerID VARCHAR(50),
+    ISIN VARCHAR(12),
+    transactionID VARCHAR(50),
+    transactionType VARCHAR(20),
+    timestamp TIMESTAMP,
+    totalValue DECIMAL(20,4),
+    units DECIMAL(20,4),
+    channel VARCHAR(50),
+    marketID VARCHAR(50)
+);
+
 -- Load data from CSV files
 PUT file:///Users/dgoh/Desktop/projects/sf-quickstarts/dbt-projects-on-snowflake/FAR-Trans/asset_information.csv @far_trans_stage;
 PUT file:///Users/dgoh/Desktop/projects/sf-quickstarts/dbt-projects-on-snowflake/FAR-Trans/close_prices.csv @far_trans_stage;
 PUT file:///Users/dgoh/Desktop/projects/sf-quickstarts/dbt-projects-on-snowflake/FAR-Trans/customer_information.csv @far_trans_stage;
+PUT file:///Users/dgoh/Desktop/projects/sf-quickstarts/dbt-projects-on-snowflake/FAR-Trans/transactions.csv @far_trans_stage;
 
 -- Copy data from stage to tables
 COPY INTO raw.asset_information
@@ -81,6 +94,11 @@ ON_ERROR = CONTINUE;
 
 COPY INTO raw.customer_information
 FROM @far_trans_stage/customer_information.csv
+FILE_FORMAT = csv_format
+ON_ERROR = CONTINUE;
+
+COPY INTO raw.transactions
+FROM @far_trans_stage/transactions.csv
 FILE_FORMAT = csv_format
 ON_ERROR = CONTINUE;
 
@@ -105,83 +123,17 @@ GRANT CREATE TABLE, CREATE VIEW ON SCHEMA MARTS TO ROLE FAR_TRANS_DBT_ROLE;
 -- Grant warehouse usage
 GRANT USAGE ON WAREHOUSE FAR_TRANS_WH TO ROLE FAR_TRANS_DBT_ROLE;
 
-
-
--- Create a technical user for DBT
--- CREATE USER IF NOT EXISTS FAR_TRANS_DBT_USER
-   -- PASSWORD = 'your_secure_password_here'
-   -- DEFAULT_ROLE = FAR_TRANS_DBT_ROLE
-   -- DEFAULT_WAREHOUSE = FAR_TRANS_WH;
-
--- GRANT ROLE FAR_TRANS_DBT_ROLE TO USER FAR_TRANS_DBT_USER;
+-- Grant role to user
 GRANT ROLE FAR_TRANS_DBT_ROLE TO USER dgoh;
 
 -- Verify data loading
 SELECT COUNT(*) FROM raw.asset_information;
 SELECT COUNT(*) FROM raw.close_prices;
 SELECT COUNT(*) FROM raw.customer_information;
+SELECT COUNT(*) FROM raw.transactions;
 
 -- Sample data verification queries
 SELECT * FROM raw.asset_information LIMIT 5;
 SELECT * FROM raw.close_prices LIMIT 5;
 SELECT * FROM raw.customer_information LIMIT 5;
-
--- Previous setup content remains the same until the table creation section
-
--- Create additional tables for raw data
-CREATE OR REPLACE TABLE raw.limit_prices (
-    isin VARCHAR(12),
-    minDate DATE,
-    maxDate DATE,
-    priceMinDate DECIMAL(20,4),
-    priceMaxDate DECIMAL(20,4),
-    profitability DECIMAL(20,4)
-);
-
-CREATE OR REPLACE TABLE raw.markets (
-    exchangeID VARCHAR(50),
-    marketID VARCHAR(50),
-    name VARCHAR(100),
-    description VARCHAR(500),
-    country VARCHAR(50),
-    tradingDays VARCHAR(100),
-    tradingHours VARCHAR(50),
-    marketClass VARCHAR(100)
-);
-
--- CREATE OR REPLACE TABLE raw.questionnaire (
---     questionnaire_id VARCHAR(50),
---     customer_id VARCHAR(50),
---     submission_date TIMESTAMP,
---     investment_horizon VARCHAR(50),
---     risk_tolerance_score INTEGER,
---     investment_knowledge INTEGER,
---     income_bracket VARCHAR(50),
---     investment_goal VARCHAR(100),
---     loss_tolerance DECIMAL(5,2),
---     preferred_investment_types VARCHAR(500),
---     timestamp TIMESTAMP
--- );
-
--- Load data from CSV files
-PUT file:///Users/dgoh/Desktop/projects/sf-quickstarts/dbt-projects-on-snowflake/FAR-Trans/limit_prices.csv @far_trans_stage;
-PUT file:///Users/dgoh/Desktop/projects/sf-quickstarts/dbt-projects-on-snowflake/FAR-Trans/markets.csv @far_trans_stage;
--- PUT file:///Users/dgoh/Desktop/projects/sf-quickstarts/dbt-projects-on-snowflake/FAR-Trans/questionnaires.csv @far_trans_stage;
-
--- Copy data from stage to tables
-COPY INTO raw.limit_prices
-FROM @far_trans_stage/limit_prices.csv
-FILE_FORMAT = csv_format
-ON_ERROR = CONTINUE;
-
-COPY INTO raw.markets
-FROM @far_trans_stage/markets.csv
-FILE_FORMAT = csv_format
-ON_ERROR = CONTINUE;
-
--- COPY INTO raw.questionnaire
--- FROM @far_trans_stage/questionnaires.csv
--- FILE_FORMAT = csv_format
--- ON_ERROR = CONTINUE;
-
--- Rest of the setup script remains the same
+SELECT * FROM raw.transactions LIMIT 5;

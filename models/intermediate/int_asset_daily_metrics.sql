@@ -27,5 +27,3 @@ select
     ai.industry
 from daily_returns dr
 left join asset_info ai on dr.isin = ai.isin
-
-
