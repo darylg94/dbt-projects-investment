@@ -4,18 +4,17 @@ with source as (
 
 renamed as (
     select
-        market_id,
-        market_name,
+        exchangeID as exchange_id,
+        marketID as market_id,
+        name as market_name,
+        description,
         country,
-        timezone,
-        opening_time,
-        closing_time,
-        currency as base_currency,
-        is_active::boolean as is_active,
-        valid_from::timestamp as valid_from,
-        lead(valid_from::timestamp) over (partition by market_id order by valid_from) as valid_to
+        tradingDays as trading_days,
+        tradingHours as trading_hours,
+        marketClass as market_class,
+        current_timestamp() as valid_from,
+        null as valid_to
     from source
 )
 
 select * from renamed
-
