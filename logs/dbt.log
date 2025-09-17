@@ -1,0 +1,40 @@
+
+
+============================== 22:25:00.233547 | 603a82c9-ce18-443a-8c7b-d7f13e8ff6fe ==============================
+[0m22:25:00.233547 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m22:25:00.234704 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/tmp/dbt/', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/tmp/dbt/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt ', 'send_anonymous_usage_stats': 'False'}
+[0m22:25:00.475782 [debug] [Dummy-1   ]: Set downloads directory='/tmp/dbt-downloads-a4x6lnm6'
+[0m22:25:00.476728 [debug] [Dummy-1   ]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m22:25:00.523560 [debug] [Dummy-1   ]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m22:25:00.524630 [debug] [Dummy-1   ]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m22:25:00.538589 [debug] [Dummy-1   ]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m22:25:00.547930 [debug] [Dummy-1   ]: Making package registry request: GET https://hub.getdbt.com/api/v1/calogica/dbt_expectations.json
+[0m22:25:00.566052 [debug] [Dummy-1   ]: Response from registry: GET https://hub.getdbt.com/api/v1/calogica/dbt_expectations.json 200
+[0m22:25:00.567707 [warn ] [Dummy-1   ]: [[33mWARNING[0m]: Deprecated functionality
+The `calogica/dbt_expectations` package is deprecated in favor of
+`metaplane/dbt_expectations`. Please update your `packages.yml` configuration to
+use `metaplane/dbt_expectations` instead.
+[0m22:25:00.571799 [debug] [Dummy-1   ]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/audit_helper.json
+[0m22:25:00.586224 [debug] [Dummy-1   ]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/audit_helper.json 200
+[0m22:25:00.588961 [debug] [Dummy-1   ]: Making package registry request: GET https://hub.getdbt.com/api/v1/calogica/dbt_date.json
+[0m22:25:00.605257 [debug] [Dummy-1   ]: Response from registry: GET https://hub.getdbt.com/api/v1/calogica/dbt_date.json 200
+[0m22:25:00.630582 [info ] [Dummy-1   ]: Updating lock file in file path: /tmp/dbt/package-lock.yml
+[0m22:25:00.634630 [debug] [Dummy-1   ]: Set downloads directory='/tmp/dbt-downloads-t668d52g'
+[0m22:25:00.647442 [info ] [Dummy-1   ]: Installing dbt-labs/dbt_utils
+[0m22:25:00.758501 [info ] [Dummy-1   ]: Installed from version 1.1.1
+[0m22:25:00.759108 [info ] [Dummy-1   ]: Updated version available: 1.3.1
+[0m22:25:00.759670 [info ] [Dummy-1   ]: Installing calogica/dbt_expectations
+[0m22:25:00.964641 [info ] [Dummy-1   ]: Installed from version 0.9.0
+[0m22:25:00.965245 [info ] [Dummy-1   ]: Updated version available: 0.10.4
+[0m22:25:00.965797 [info ] [Dummy-1   ]: Installing dbt-labs/audit_helper
+[0m22:25:01.000409 [info ] [Dummy-1   ]: Installed from version 0.9.0
+[0m22:25:01.001009 [info ] [Dummy-1   ]: Updated version available: 0.12.1
+[0m22:25:01.001552 [info ] [Dummy-1   ]: Installing calogica/dbt_date
+[0m22:25:01.039823 [info ] [Dummy-1   ]: Installed from version 0.8.1
+[0m22:25:01.040440 [info ] [Dummy-1   ]: Updated version available: 0.10.1
+[0m22:25:01.040989 [info ] [Dummy-1   ]: 
+[0m22:25:01.041670 [info ] [Dummy-1   ]: Updates available for packages: ['dbt-labs/dbt_utils', 'calogica/dbt_expectations', 'dbt-labs/audit_helper', 'calogica/dbt_date']                 
+Update your versions in packages.yml, then run dbt deps
+[0m22:25:01.044668 [debug] [Dummy-1   ]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 0.9067447, "process_in_blocks": "0", "process_kernel_time": 0.85, "process_mem_max_rss": "399040", "process_out_blocks": "0", "process_user_time": 4.22}
+[0m22:25:01.045385 [debug] [Dummy-1   ]: Command `cli deps` succeeded at 22:25:01.045107 after 0.91 seconds
+[0m22:25:01.045922 [debug] [Dummy-1   ]: Flushing usage events
