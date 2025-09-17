@@ -1,4 +1,4 @@
-far_trans:
+dbt_investment_FAR_TRANS:
   target: dev
   outputs:
     dev:
