@@ -46,3 +46,4 @@ select
         else 'Low'
     end as volatility_category
 from rolling_volatility
+

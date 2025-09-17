@@ -40,3 +40,4 @@ customer_recommendations as (
 )
 
 select * from customer_recommendations
+

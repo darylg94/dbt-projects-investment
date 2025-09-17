@@ -38,3 +38,4 @@ select
     end as risk_alignment_status
 from customer_info ci
 left join latest_questionnaire lq on ci.customer_id = lq.customer_id
+

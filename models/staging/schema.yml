@@ -13,22 +13,18 @@ sources:
             tests:
               - not_null
               - unique
+              - dbt_expectations.expect_column_value_lengths_to_equal:
+                  value: 12
           - name: assetname
             description: Full name of the asset
-          - name: assetshortname
-            description: Short name/symbol of the asset
+            tests:
+              - not_null
           - name: assetcategory
             description: Category of the asset (Stock, Bond, MTF)
-          - name: assetsubcategory
-            description: Sub-category of the asset
-          - name: marketid
-            description: Market identifier
-          - name: sector
-            description: Business sector
-          - name: industry
-            description: Specific industry
-          - name: timestamp
-            description: Record validity timestamp
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['Stock', 'Bond', 'MTF']
 
       - name: close_prices
         description: Daily closing prices for assets
@@ -44,10 +40,14 @@ sources:
             description: Price date
             tests:
               - not_null
+              - dbt_expectations.expect_column_values_to_be_between:
+                  min_value: '2018-01-01'
+                  max_value: '2025-12-31'
           - name: closeprice
             description: Closing price
             tests:
               - not_null
+              - positive_close_prices
 
       - name: customer_information
         description: Customer profile and risk information
@@ -59,95 +59,62 @@ sources:
               - unique
           - name: customertype
             description: Type of customer (Premium, Mass)
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['Premium', 'Mass']
           - name: risklevel
             description: Customer's risk tolerance level
+            tests:
+              - not_null
+              - valid_risk_level
           - name: investmentcapacity
             description: Investment capacity category
-          - name: lastquestionnairedate
-            description: Date of last risk questionnaire completion
-          - name: timestamp
-            description: Record validity timestamp
+            tests:
+              - not_null
+              - accepted_values:
+                  values: 
+                    - 'Predicted_CAP_LT30K'
+                    - 'CAP_30K_80K'
+                    - 'CAP_80K_300K'
+                    - 'CAP_300K_1M'
+                    - 'CAP_GT1M'
 
-      - name: limit_prices
-        description: Daily price limits for trading assets
-        columns:
-          - name: isin
-            description: International Securities Identification Number
-            tests:
-              - not_null
-              - relationships:
-                  to: source('raw', 'asset_information')
-                  field: isin
-          - name: timestamp
-            description: Price date
-            tests:
-              - not_null
-          - name: upper_limit
-            description: Upper price limit for trading
-            tests:
-              - not_null
-          - name: lower_limit
-            description: Lower price limit for trading
-            tests:
-              - not_null
-          - name: currency
-            description: Price currency
+models:
+  - name: stg_asset_information
+    description: Standardized asset information
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - isin
+            - valid_from
+    columns:
+      - name: isin
+        tests:
+          - not_null
+          - unique
 
-      - name: markets
-        description: Market reference data
-        columns:
-          - name: market_id
-            description: Unique market identifier
-            tests:
-              - not_null
-              - unique
-          - name: market_name
-            description: Full market name
-          - name: country
-            description: Country where market operates
-          - name: timezone
-            description: Market timezone
-          - name: opening_time
-            description: Market opening time
-          - name: closing_time
-            description: Market closing time
-          - name: currency
-            description: Base currency for the market
-          - name: is_active
-            description: Whether the market is currently active
-          - name: valid_from
-            description: Record validity start date
+  - name: stg_close_prices
+    description: Standardized close prices
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - isin
+            - price_date
+    columns:
+      - name: close_price
+        tests:
+          - not_null
+          - positive_close_prices
 
-      - name: questionnaire
-        description: Customer questionnaire responses
-        columns:
-          - name: questionnaire_id
-            description: Unique questionnaire identifier
-            tests:
-              - not_null
-              - unique
-          - name: customer_id
-            description: Customer identifier
-            tests:
-              - not_null
-              - relationships:
-                  to: source('raw', 'customer_information')
-                  field: customerid
-          - name: submission_date
-            description: When the questionnaire was submitted
-          - name: investment_horizon
-            description: Planned investment timeframe
-          - name: risk_tolerance_score
-            description: Calculated risk tolerance score
-          - name: investment_knowledge
-            description: Self-assessed investment knowledge level
-          - name: income_bracket
-            description: Customer's income range
-          - name: investment_goal
-            description: Primary investment objective
-          - name: loss_tolerance
-            description: Maximum acceptable loss percentage
-          - name: preferred_investment_types
-            description: Types of investments preferred
-          - name: timestamp
-            description: Record validity timestamp
+  - name: stg_customer_information
+    description: Standardized customer information
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - customer_id
+            - valid_from
+    columns:
+      - name: risk_level
+        tests:
+          - valid_risk_level

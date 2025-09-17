@@ -37,3 +37,4 @@ select
         else 'Low'
     end as market_risk_level
 from market_risk_metrics
+

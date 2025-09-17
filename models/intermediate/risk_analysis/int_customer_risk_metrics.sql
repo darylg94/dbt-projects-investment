@@ -48,3 +48,4 @@ select
         else 0.80
     end as max_equity_allocation
 from risk_scoring
+

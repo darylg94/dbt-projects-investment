@@ -1,0 +1,40 @@
+far_trans:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: your_account_id # Replace with your Snowflake account identifier
+      
+      # User authentication
+      user: FAR_TRANS_DBT_USER
+      password: your_secure_password_here # Replace with actual password
+      
+      # Database configuration
+      role: FAR_TRANS_DBT_ROLE
+      database: FAR_TRANS_DB
+      warehouse: FAR_TRANS_WH
+      schema: RAW
+      
+      # Connection parameters
+      threads: 4
+      client_session_keep_alive: False
+      query_tag: dbt_far_trans
+      
+    prod:
+      type: snowflake
+      account: your_account_id # Replace with your Snowflake account identifier
+      
+      # User authentication
+      user: FAR_TRANS_DBT_USER
+      password: your_secure_password_here # Replace with actual password
+      
+      # Database configuration
+      role: FAR_TRANS_DBT_ROLE
+      database: FAR_TRANS_DB
+      warehouse: FAR_TRANS_WH
+      schema: RAW
+      
+      # Connection parameters
+      threads: 8
+      client_session_keep_alive: True
+      query_tag: dbt_far_trans_prod

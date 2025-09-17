@@ -33,3 +33,4 @@ price_analysis as (
 )
 
 select * from price_analysis
+

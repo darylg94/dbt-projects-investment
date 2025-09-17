@@ -22,3 +22,4 @@ select
     mi.is_active
 from asset_markets am
 left join market_info mi on am.market_id = mi.market_id
+
