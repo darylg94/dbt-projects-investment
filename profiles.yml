@@ -3,11 +3,10 @@ far_trans:
   outputs:
     dev:
       type: snowflake
-      account: your_account_id # Replace with your Snowflake account identifier
+      account: 'not needed' # Replace with your Snowflake account identifier
       
       # User authentication
-      user: FAR_TRANS_DBT_USER
-      password: your_secure_password_here # Replace with actual password
+      user: 'not needed'
       
       # Database configuration
       role: FAR_TRANS_DBT_ROLE
@@ -22,10 +21,10 @@ far_trans:
       
     prod:
       type: snowflake
-      account: your_account_id # Replace with your Snowflake account identifier
+      account: 'not needed' # Replace with your Snowflake account identifier
       
       # User authentication
-      user: FAR_TRANS_DBT_USER
+      user: 'not needed'
       password: your_secure_password_here # Replace with actual password
       
       # Database configuration
