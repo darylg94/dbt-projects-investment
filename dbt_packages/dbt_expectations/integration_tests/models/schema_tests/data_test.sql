@@ -6,7 +6,10 @@ select
     'a' as col_string_a,
     'b' as col_string_b,
     cast(null as {{ dbt.type_string() }}) as col_null,
-    cast(null as {{ dbt.type_string() }}) as col_null_2
+    cast(null as {{ dbt.type_string() }}) as col_null_2,
+    1.0 as col_numeric_a_plus_b,
+    2 as idx_multiplied_by_2,
+    -2 as idx_multiplied_by_minus_2
 
 union all
 
@@ -18,7 +21,10 @@ select
     'b' as col_string_a,
     'ab' as col_string_b,
     null as col_null,
-    null as col_null_2
+    null as col_null_2,
+    1.0 as col_numeric_a_plus_b,
+    4 as idx_multiplied_by_2,
+    -4 as idx_multiplied_by_minus_2
 
 union all
 
@@ -30,7 +36,10 @@ select
     'c' as col_string_a,
     'abc' as col_string_b,
     null as col_null,
-    null as col_null_2
+    null as col_null_2,
+    1.0 as col_numeric_a_plus_b,
+    6 as idx_multiplied_by_2,
+    -6 as idx_multiplied_by_minus_2
 
 union all
 
@@ -42,4 +51,7 @@ select
     'c' as col_string_a,
     'abcd' as col_string_b,
     null as col_null,
-    null as col_null_2
+    null as col_null_2,
+    1.0 as col_numeric_a_plus_b,
+    8 as idx_multiplied_by_2,
+    -8 as idx_multiplied_by_minus_2

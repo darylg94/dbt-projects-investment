@@ -1,0 +1,30 @@
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        assetcategory as value_field,
+        count(*) as n_records
+
+    from FAR_TRANS_DB.raw.asset_information
+    group by assetcategory
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'Stock','Bond','MTF'
+)
+
+
+
+      
+    ) dbt_internal_test

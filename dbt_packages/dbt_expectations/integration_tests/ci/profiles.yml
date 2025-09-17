@@ -1,7 +1,3 @@
-config:
-  send_anonymous_usage_stats: False
-  use_colors: True
-
 integration_tests:
   outputs:
     postgres:
@@ -36,5 +32,29 @@ integration_tests:
     duckdb:
       type: duckdb
       path: ":memory:"
+
+    spark:
+      type: spark
+      method: thrift
+      host: 127.0.0.1
+      port: 10000
+      user: dbt
+      schema: analytics
+      connect_retries: 5
+      connect_timeout: 60
+      retry_all: true
+      server_side_parameters:
+        "spark.sql.parser.escapedStringLiterals": "true"
+
+    trino:
+      type: trino
+      method: none
+      host: localhost
+      port: 8080
+      user: admin
+      catalog: memory
+      schema: default
+      timezone: UTC
+      threads: 4
 
   target: postgres

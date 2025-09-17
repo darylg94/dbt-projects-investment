@@ -25,7 +25,7 @@ dbt_investment_FAR_TRANS:
       
       # User authentication
       user: 'not needed'
-      password: your_secure_password_here # Replace with actual password
+      password: 'not needed' # Replace with actual password
       
       # Database configuration
       role: FAR_TRANS_DBT_ROLE

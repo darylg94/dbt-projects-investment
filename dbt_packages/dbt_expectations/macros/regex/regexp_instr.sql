@@ -52,6 +52,32 @@ regexp_instr({{ source_value }}, '{{ regexp }}', {{ position }}, {{ occurrence }
 regexp_matches({{ source_value }}, '{{ regexp }}', '{{ flags }}')
 {% endmacro %}
 
+{% macro spark__regexp_instr(source_value, regexp, position, occurrence, is_raw, flags) %}
+{% if is_raw or flags %}
+    {{ exceptions.warn(
+            "is_raw and flags options are not supported for this adapter "
+            ~ "and are being ignored."
+    ) }}
+{% endif %}
+length(regexp_extract({{ source_value }}, '{{ regexp }}', 0))
+{% endmacro %}
+
+{% macro trino__regexp_instr(source_value, regexp, position, occurrence, is_raw, flags) %}
+    {% if flags %}
+        {{ dbt_expectations._validate_re2_flags(flags) }}
+        {# Trino prepends "(?flags)" to set flags for current group #}
+        {%- set regexp = "(?" ~ flags ~ ")" ~ regexp -%}
+    {% endif %}
+    {% if is_raw %}
+        {{ exceptions.warn(
+                "is_raw option is not supported for this adapter "
+                ~ "and is being ignored."
+        ) }}
+    {% endif %}
+    {%- set regexp_query = "regexp_position(" ~ source_value ~ ", '" ~ regexp ~ "', " ~ position ~ ", " ~ occurrence ~ ")" -%}
+    {# Trino regexp_position returns -1 if not found. Change it to 0, to be consistent with other adapters #}
+    if({{ regexp_query}} = -1, 0, {{ regexp_query}})
+{% endmacro %}
 
 {% macro _validate_flags(flags, alphabet) %}
 {% for flag in flags %}

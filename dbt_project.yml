@@ -1,8 +1,8 @@
-name: 'far_trans'
+name: dbt_investment_FAR_TRANS
 version: '1.0.0'
 config-version: 2
 
-profile: 'snowflake'
+profile: dbt_investment_FAR_TRANS
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
