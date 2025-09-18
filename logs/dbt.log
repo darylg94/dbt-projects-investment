@@ -6450,3 +6450,2298 @@ where price_change_pct > 0.5  -- Flag price changes greater than 50%
 [0m02:57:05.421495 [debug] [Dummy-1   ]: Resource report: {"command_name": "build", "command_success": false, "command_wall_clock_time": 9.012763, "process_in_blocks": "0", "process_kernel_time": 1.54, "process_mem_max_rss": "508780", "process_out_blocks": "0", "process_user_time": 8.27}
 [0m02:57:05.422230 [debug] [Dummy-1   ]: Command `cli build` failed at 02:57:05.421946 after 9.01 seconds
 [0m02:57:05.422842 [debug] [Dummy-1   ]: Flushing usage events
+
+
+============================== 03:12:35.468001 | 04145cee-5d63-452c-9d54-ca99fa7df63f ==============================
+[0m03:12:35.468001 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m03:12:35.469242 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/tmp/dbt/logs', 'profiles_dir': '/tmp/dbt/', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': '/tmp/dbt/target/', 'invocation_command': 'dbt ', 'send_anonymous_usage_stats': 'False'}
+[0m03:12:35.868784 [info ] [Dummy-1   ]: Registered adapter: snowflake=1.9.2
+[0m03:12:36.672343 [debug] [Dummy-1   ]: checksum: 6d8301ed5f8f0471e249cbcc8805b42bc5f78a9b258cb4e5c4b012c6ace116b4, vars: {}, profile: , target: prod, version: 1.9.4
+[0m03:12:37.069364 [info ] [Dummy-1   ]: Unable to do partial parsing because profile has changed
+[0m03:12:40.909273 [warn ] [Dummy-1   ]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.far_trans.staging
+- models.far_trans.marts
+- models.far_trans.intermediate
+[0m03:12:41.107219 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m03:12:41.110889 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m03:12:41.169860 [info ] [Dummy-1   ]: Found 8 models, 43 data tests, 4 sources, 917 macros
+[0m03:12:41.173911 [info ] [Dummy-1   ]: 
+[0m03:12:41.174554 [info ] [Dummy-1   ]: Concurrency: 8 threads (target='prod')
+[0m03:12:41.175041 [info ] [Dummy-1   ]: 
+[0m03:12:41.175884 [debug] [Dummy-1   ]: Acquiring new snowflake connection 'master'
+[0m03:12:41.183946 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_FAR_TRANS_DB'
+[0m03:12:41.291670 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB"
+[0m03:12:41.292346 [debug] [ThreadPool]: On list_FAR_TRANS_DB: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB"} */
+show terse schemas in database FAR_TRANS_DB
+    limit 10000
+[0m03:12:41.292867 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:12:42.094497 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.801 seconds
+[0m03:12:42.099243 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB, now list_FAR_TRANS_DB_RAW)
+[0m03:12:42.120911 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m03:12:42.121610 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m03:12:42.122136 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m03:12:42.874902 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.753 seconds
+[0m03:12:42.880938 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m03:12:42.882066 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+show objects in FAR_TRANS_DB.RAW
+    limit 10000
+    
+;
+[0m03:12:43.009928 [debug] [ThreadPool]: SQL status: SUCCESS 15 in 0.127 seconds
+[0m03:12:43.013112 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m03:12:43.013750 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m03:12:43.119299 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.105 seconds
+[0m03:12:43.135401 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m03:12:43.136157 [debug] [Thread-3 (]: Began running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m03:12:43.137310 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m03:12:43.138073 [debug] [Thread-5 (]: Began running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m03:12:43.138964 [info ] [Thread-2 (]: 1 of 8 START sql view model RAW.stg_asset_information .......................... [RUN]
+[0m03:12:43.139773 [info ] [Thread-3 (]: 2 of 8 START sql view model RAW.stg_close_prices ............................... [RUN]
+[0m03:12:43.140559 [info ] [Thread-4 (]: 3 of 8 START sql view model RAW.stg_customer_information ....................... [RUN]
+[0m03:12:43.141349 [info ] [Thread-5 (]: 4 of 8 START sql view model RAW.stg_transactions ............................... [RUN]
+[0m03:12:43.142164 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB_RAW, now model.dbt_investment_FAR_TRANS.stg_asset_information)
+[0m03:12:43.142937 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_close_prices'
+[0m03:12:43.143665 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_customer_information'
+[0m03:12:43.144394 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_transactions'
+[0m03:12:43.144996 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m03:12:43.145587 [debug] [Thread-3 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m03:12:43.146154 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m03:12:43.146760 [debug] [Thread-5 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m03:12:43.160811 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m03:12:43.169184 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m03:12:43.179754 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m03:12:43.187746 [debug] [Thread-5 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m03:12:43.188997 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m03:12:43.189958 [debug] [Thread-3 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m03:12:43.190798 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m03:12:43.214209 [debug] [Thread-5 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m03:12:43.274615 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m03:12:43.286483 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m03:12:43.289220 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m03:12:43.298886 [debug] [Thread-5 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m03:12:43.301096 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m03:12:43.302788 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m03:12:43.304619 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m03:12:43.305458 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.stg_asset_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_asset_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_asset_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.asset_information
+),
+
+renamed as (
+    select
+        isin,
+        assetname as asset_name,
+        assetshortname as asset_short_name,
+        assetcategory as asset_category,
+        assetsubcategory as asset_sub_category,
+        marketid as market_id,
+        sector,
+        industry,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by isin order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m03:12:43.307013 [debug] [Thread-5 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m03:12:43.307693 [debug] [Thread-3 (]: On model.dbt_investment_FAR_TRANS.stg_close_prices: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_close_prices"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_close_prices
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.close_prices
+),
+
+renamed as (
+    select
+        isin,
+        timestamp::timestamp as price_date,
+        closeprice::decimal(20,4) as close_price
+    from source
+)
+
+select * from renamed
+  );
+[0m03:12:43.308440 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.stg_customer_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_customer_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_customer_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.customer_information
+),
+
+renamed as (
+    select
+        customerid as customer_id,
+        customertype as customer_type,
+        risklevel as risk_level,
+        investmentcapacity as investment_capacity,
+        lastquestionnairedate::date as last_questionnaire_date,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by customerid order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m03:12:43.309113 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m03:12:43.309799 [debug] [Thread-5 (]: On model.dbt_investment_FAR_TRANS.stg_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_transactions
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.transactions
+),
+
+renamed as (
+    select
+        customerID as customer_id,
+        ISIN as isin,
+        transactionID as transaction_id,
+        transactionType as transaction_type,
+        timestamp::timestamp as transaction_date,
+        totalValue::decimal(20,4) as total_value,
+        units::decimal(20,4) as units,
+        channel,
+        marketID as market_id
+    from source
+)
+
+select * from renamed
+  );
+[0m03:12:43.310418 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m03:12:43.311009 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m03:12:43.311739 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m03:12:44.351137 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.042 seconds
+[0m03:12:44.352179 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.042 seconds
+[0m03:12:44.365168 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.053 seconds
+[0m03:12:44.375820 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.065 seconds
+[0m03:12:44.402621 [info ] [Thread-2 (]: 1 of 8 OK created sql view model RAW.stg_asset_information ..................... [[32mSUCCESS 1[0m in 1.25s]
+[0m03:12:44.403650 [info ] [Thread-3 (]: 2 of 8 OK created sql view model RAW.stg_close_prices .......................... [[32mSUCCESS 1[0m in 1.25s]
+[0m03:12:44.404578 [info ] [Thread-5 (]: 4 of 8 OK created sql view model RAW.stg_transactions .......................... [[32mSUCCESS 1[0m in 1.25s]
+[0m03:12:44.405549 [info ] [Thread-4 (]: 3 of 8 OK created sql view model RAW.stg_customer_information .................. [[32mSUCCESS 1[0m in 1.26s]
+[0m03:12:44.406488 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m03:12:44.407375 [debug] [Thread-3 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m03:12:44.408225 [debug] [Thread-5 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m03:12:44.409050 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m03:12:44.410613 [debug] [Thread-7 (]: Began running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m03:12:44.412008 [debug] [Thread-9 (]: Began running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m03:12:44.412903 [info ] [Thread-7 (]: 5 of 8 START sql view model RAW.int_asset_daily_metrics ........................ [RUN]
+[0m03:12:44.413827 [info ] [Thread-9 (]: 6 of 8 START sql view model RAW.int_customer_transactions ...................... [RUN]
+[0m03:12:44.414834 [debug] [Thread-7 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics'
+[0m03:12:44.415738 [debug] [Thread-9 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions'
+[0m03:12:44.416405 [debug] [Thread-7 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m03:12:44.417004 [debug] [Thread-9 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m03:12:44.427889 [debug] [Thread-7 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m03:12:44.437291 [debug] [Thread-9 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m03:12:44.438450 [debug] [Thread-7 (]: Began executing node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m03:12:44.444862 [debug] [Thread-9 (]: Began executing node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m03:12:44.447888 [debug] [Thread-7 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m03:12:44.457896 [debug] [Thread-9 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m03:12:44.460412 [debug] [Thread-7 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m03:12:44.461359 [debug] [Thread-7 (]: On model.dbt_investment_FAR_TRANS.int_asset_daily_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"} */
+create or replace   view FAR_TRANS_DB.RAW.int_asset_daily_metrics
+  
+   as (
+    with asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+),
+
+daily_prices as (
+    select * from FAR_TRANS_DB.RAW.stg_close_prices
+),
+
+daily_returns as (
+    select
+        isin,
+        price_date,
+        close_price,
+        lag(close_price) over (partition by isin order by price_date) as prev_close_price,
+        (close_price - lag(close_price) over (partition by isin order by price_date)) / 
+        lag(close_price) over (partition by isin order by price_date) as daily_return
+    from daily_prices
+)
+
+select
+    dr.*,
+    ai.asset_name,
+    ai.asset_category,
+    ai.asset_sub_category,
+    ai.sector,
+    ai.industry
+from daily_returns dr
+left join asset_info ai on dr.isin = ai.isin
+  );
+[0m03:12:44.463370 [debug] [Thread-9 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m03:12:44.464036 [debug] [Thread-7 (]: Opening a new connection, currently in state init
+[0m03:12:44.464796 [debug] [Thread-9 (]: On model.dbt_investment_FAR_TRANS.int_customer_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_customer_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.int_customer_transactions
+  
+   as (
+    with customer_info as (
+    select * from FAR_TRANS_DB.RAW.stg_customer_information
+    where valid_to is null  -- Get current customer information
+),
+
+transactions as (
+    select * from FAR_TRANS_DB.RAW.stg_transactions
+),
+
+asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+)
+
+select
+    t.transaction_id,
+    t.customer_id,
+    t.isin,
+    t.transaction_type,
+    t.transaction_date,
+    t.total_value,
+    t.units,
+    t.channel,
+    t.market_id,
+    ci.customer_type,
+    ci.risk_level,
+    ci.investment_capacity,
+    ai.asset_name,
+    ai.asset_category,
+    ai.sector
+from transactions t
+left join customer_info ci on t.customer_id = ci.customer_id
+left join asset_info ai on t.isin = ai.isin
+  );
+[0m03:12:44.465809 [debug] [Thread-9 (]: Opening a new connection, currently in state init
+[0m03:12:45.388577 [debug] [Thread-9 (]: SQL status: SUCCESS 1 in 0.923 seconds
+[0m03:12:45.392382 [info ] [Thread-9 (]: 6 of 8 OK created sql view model RAW.int_customer_transactions ................. [[32mSUCCESS 1[0m in 0.98s]
+[0m03:12:45.393367 [debug] [Thread-9 (]: Finished running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m03:12:45.394493 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m03:12:45.395424 [info ] [Thread-2 (]: 7 of 8 START sql view model RAW.mart_customer_portfolio ........................ [RUN]
+[0m03:12:45.396214 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_asset_information, now model.dbt_investment_FAR_TRANS.mart_customer_portfolio)
+[0m03:12:45.396839 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m03:12:45.405347 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m03:12:45.406296 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m03:12:45.414687 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m03:12:45.417306 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m03:12:45.418153 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.mart_customer_portfolio: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_customer_portfolio
+  
+   as (
+    with customer_transactions as (
+    select * from FAR_TRANS_DB.RAW.int_customer_transactions
+),
+
+customer_portfolio as (
+    select
+        customer_id,
+        customer_type,
+        risk_level,
+        investment_capacity,
+        count(distinct transaction_id) as total_transactions,
+        count(distinct isin) as unique_assets,
+        sum(case when transaction_type = 'Buy' then total_value else 0 end) as total_purchases,
+        sum(case when transaction_type = 'Sell' then total_value else 0 end) as total_sales,
+        sum(case when transaction_type = 'Buy' then total_value else -total_value end) as net_investment,
+        count(distinct asset_category) as asset_categories_traded,
+        count(distinct sector) as sectors_invested,
+        min(transaction_date) as first_transaction_date,
+        max(transaction_date) as last_transaction_date
+    from customer_transactions
+    group by 1,2,3,4
+)
+
+select * from customer_portfolio
+  );
+[0m03:12:45.418798 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m03:12:45.428835 [debug] [Thread-7 (]: SQL status: SUCCESS 1 in 0.965 seconds
+[0m03:12:45.432493 [info ] [Thread-7 (]: 5 of 8 OK created sql view model RAW.int_asset_daily_metrics ................... [[32mSUCCESS 1[0m in 1.02s]
+[0m03:12:45.433462 [debug] [Thread-7 (]: Finished running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m03:12:45.434532 [debug] [Thread-8 (]: Began running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m03:12:45.435400 [info ] [Thread-8 (]: 8 of 8 START sql view model RAW.mart_asset_performance ......................... [RUN]
+[0m03:12:45.436268 [debug] [Thread-8 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance'
+[0m03:12:45.436881 [debug] [Thread-8 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m03:12:45.447301 [debug] [Thread-8 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m03:12:45.448260 [debug] [Thread-8 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m03:12:45.456255 [debug] [Thread-8 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m03:12:45.458424 [debug] [Thread-8 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m03:12:45.459155 [debug] [Thread-8 (]: On model.dbt_investment_FAR_TRANS.mart_asset_performance: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_asset_performance"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_asset_performance
+  
+   as (
+    with daily_metrics as (
+    select * from FAR_TRANS_DB.RAW.int_asset_daily_metrics
+),
+
+asset_stats as (
+    select
+        isin,
+        asset_name,
+        asset_category,
+        asset_sub_category,
+        sector,
+        industry,
+        min(price_date) as first_trading_date,
+        max(price_date) as last_trading_date,
+        min(close_price) as min_price,
+        max(close_price) as max_price,
+        avg(close_price) as avg_price,
+        avg(daily_return) as avg_daily_return,
+        stddev(daily_return) as daily_volatility,
+        count(*) as trading_days
+    from daily_metrics
+    where daily_return is not null
+    group by 1,2,3,4,5,6
+)
+
+select * from asset_stats
+  );
+[0m03:12:45.459789 [debug] [Thread-8 (]: Opening a new connection, currently in state init
+[0m03:12:46.416532 [debug] [Thread-8 (]: SQL status: SUCCESS 1 in 0.956 seconds
+[0m03:12:46.417580 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.999 seconds
+[0m03:12:46.421290 [info ] [Thread-8 (]: 8 of 8 OK created sql view model RAW.mart_asset_performance .................... [[32mSUCCESS 1[0m in 0.98s]
+[0m03:12:46.425362 [info ] [Thread-2 (]: 7 of 8 OK created sql view model RAW.mart_customer_portfolio ................... [[32mSUCCESS 1[0m in 1.03s]
+[0m03:12:46.426378 [debug] [Thread-8 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m03:12:46.427229 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m03:12:46.432244 [debug] [Dummy-1   ]: Connection 'master' was properly closed.
+[0m03:12:46.432947 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_customer_portfolio' was properly closed.
+[0m03:12:46.433528 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_close_prices' was properly closed.
+[0m03:12:46.434004 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_customer_information' was properly closed.
+[0m03:12:46.434465 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_transactions' was properly closed.
+[0m03:12:46.434916 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics' was properly closed.
+[0m03:12:46.435365 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions' was properly closed.
+[0m03:12:46.435819 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance' was properly closed.
+[0m03:12:46.436484 [info ] [Dummy-1   ]: 
+[0m03:12:46.437049 [info ] [Dummy-1   ]: Finished running 8 view models in 0 hours 0 minutes and 5.26 seconds (5.26s).
+[0m03:12:46.439370 [debug] [Dummy-1   ]: Command end result
+[0m03:12:46.703763 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m03:12:46.707257 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m03:12:46.715938 [debug] [Dummy-1   ]: Wrote artifact RunExecutionResult to /tmp/dbt/target/run_results.json
+[0m03:12:46.716558 [info ] [Dummy-1   ]: 
+[0m03:12:46.717283 [info ] [Dummy-1   ]: [32mCompleted successfully[0m
+[0m03:12:46.717890 [info ] [Dummy-1   ]: 
+[0m03:12:46.718444 [info ] [Dummy-1   ]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 TOTAL=8
+[0m03:12:46.720987 [debug] [Dummy-1   ]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 11.352298, "process_in_blocks": "0", "process_kernel_time": 1.57, "process_mem_max_rss": "528424", "process_out_blocks": "0", "process_user_time": 10.17}
+[0m03:12:46.721774 [debug] [Dummy-1   ]: Command `cli run` succeeded at 03:12:46.721486 after 11.35 seconds
+[0m03:12:46.722371 [debug] [Dummy-1   ]: Flushing usage events
+
+
+============================== 09:50:22.845986 | b05487ff-edb7-409a-a8d2-c61d9353f298 ==============================
+[0m09:50:22.845986 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m09:50:22.847185 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/tmp/dbt/logs', 'profiles_dir': '/tmp/dbt/', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt ', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': '/tmp/dbt/target/', 'introspect': 'True', 'send_anonymous_usage_stats': 'False'}
+[0m09:50:23.236475 [info ] [Dummy-1   ]: Registered adapter: snowflake=1.9.2
+[0m09:50:24.018241 [debug] [Dummy-1   ]: checksum: 6d8301ed5f8f0471e249cbcc8805b42bc5f78a9b258cb4e5c4b012c6ace116b4, vars: {}, profile: , target: prod, version: 1.9.4
+[0m09:50:24.540690 [debug] [Dummy-1   ]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m09:50:24.541461 [debug] [Dummy-1   ]: Partial parsing enabled, no changes found, skipping parsing
+[0m09:50:24.551613 [warn ] [Dummy-1   ]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.far_trans.marts
+- models.far_trans.staging
+- models.far_trans.intermediate
+[0m09:50:24.800001 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m09:50:24.803280 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m09:50:24.866875 [info ] [Dummy-1   ]: Found 8 models, 43 data tests, 4 sources, 917 macros
+[0m09:50:24.870861 [info ] [Dummy-1   ]: 
+[0m09:50:24.871558 [info ] [Dummy-1   ]: Concurrency: 8 threads (target='prod')
+[0m09:50:24.872103 [info ] [Dummy-1   ]: 
+[0m09:50:24.873065 [debug] [Dummy-1   ]: Acquiring new snowflake connection 'master'
+[0m09:50:24.880839 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_FAR_TRANS_DB'
+[0m09:50:25.020287 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB"
+[0m09:50:25.021016 [debug] [ThreadPool]: On list_FAR_TRANS_DB: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB"} */
+show terse schemas in database FAR_TRANS_DB
+    limit 10000
+[0m09:50:25.021596 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m09:50:26.139022 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 1.117 seconds
+[0m09:50:26.143750 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB, now list_FAR_TRANS_DB_RAW)
+[0m09:50:26.163415 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m09:50:26.164073 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m09:50:26.164572 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m09:50:27.634486 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 1.470 seconds
+[0m09:50:27.640515 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m09:50:27.641199 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+show objects in FAR_TRANS_DB.RAW
+    limit 10000
+    
+;
+[0m09:50:27.762322 [debug] [ThreadPool]: SQL status: SUCCESS 15 in 0.120 seconds
+[0m09:50:27.765375 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m09:50:27.765963 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m09:50:27.869040 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.102 seconds
+[0m09:50:27.884760 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m09:50:27.885509 [debug] [Thread-3 (]: Began running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m09:50:27.886180 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m09:50:27.886860 [debug] [Thread-5 (]: Began running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m09:50:27.887739 [info ] [Thread-2 (]: 1 of 8 START sql view model RAW.stg_asset_information .......................... [RUN]
+[0m09:50:27.888535 [info ] [Thread-3 (]: 2 of 8 START sql view model RAW.stg_close_prices ............................... [RUN]
+[0m09:50:27.889300 [info ] [Thread-4 (]: 3 of 8 START sql view model RAW.stg_customer_information ....................... [RUN]
+[0m09:50:27.890074 [info ] [Thread-5 (]: 4 of 8 START sql view model RAW.stg_transactions ............................... [RUN]
+[0m09:50:27.890834 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB_RAW, now model.dbt_investment_FAR_TRANS.stg_asset_information)
+[0m09:50:27.891580 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_close_prices'
+[0m09:50:27.892295 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_customer_information'
+[0m09:50:27.893163 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_transactions'
+[0m09:50:27.893816 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m09:50:27.894374 [debug] [Thread-3 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m09:50:27.894993 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m09:50:27.895542 [debug] [Thread-5 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m09:50:27.911332 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m09:50:27.919402 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m09:50:27.927447 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m09:50:27.937398 [debug] [Thread-5 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m09:50:27.938753 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m09:50:27.939563 [debug] [Thread-3 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m09:50:27.940592 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m09:50:27.952719 [debug] [Thread-5 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m09:50:28.026098 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m09:50:28.026489 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m09:50:28.034495 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m09:50:28.042384 [debug] [Thread-5 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m09:50:28.044275 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m09:50:28.046254 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m09:50:28.048135 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m09:50:28.048882 [debug] [Thread-3 (]: On model.dbt_investment_FAR_TRANS.stg_close_prices: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_close_prices"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_close_prices
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.close_prices
+),
+
+renamed as (
+    select
+        isin,
+        timestamp::timestamp as price_date,
+        closeprice::decimal(20,4) as close_price
+    from source
+)
+
+select * from renamed
+  );
+[0m09:50:28.050481 [debug] [Thread-5 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m09:50:28.051134 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.stg_asset_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_asset_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_asset_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.asset_information
+),
+
+renamed as (
+    select
+        isin,
+        assetname as asset_name,
+        assetshortname as asset_short_name,
+        assetcategory as asset_category,
+        assetsubcategory as asset_sub_category,
+        marketid as market_id,
+        sector,
+        industry,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by isin order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m09:50:28.051857 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.stg_customer_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_customer_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_customer_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.customer_information
+),
+
+renamed as (
+    select
+        customerid as customer_id,
+        customertype as customer_type,
+        risklevel as risk_level,
+        investmentcapacity as investment_capacity,
+        lastquestionnairedate::date as last_questionnaire_date,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by customerid order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m09:50:28.052498 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m09:50:28.053157 [debug] [Thread-5 (]: On model.dbt_investment_FAR_TRANS.stg_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_transactions
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.transactions
+),
+
+renamed as (
+    select
+        customerID as customer_id,
+        ISIN as isin,
+        transactionID as transaction_id,
+        transactionType as transaction_type,
+        timestamp::timestamp as transaction_date,
+        totalValue::decimal(20,4) as total_value,
+        units::decimal(20,4) as units,
+        channel,
+        marketID as market_id
+    from source
+)
+
+select * from renamed
+  );
+[0m09:50:28.053770 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m09:50:28.054320 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m09:50:28.055146 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m09:50:29.135796 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.081 seconds
+[0m09:50:29.146170 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.093 seconds
+[0m09:50:29.147413 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.094 seconds
+[0m09:50:29.179276 [info ] [Thread-4 (]: 3 of 8 OK created sql view model RAW.stg_customer_information .................. [[32mSUCCESS 1[0m in 1.28s]
+[0m09:50:29.180212 [info ] [Thread-3 (]: 2 of 8 OK created sql view model RAW.stg_close_prices .......................... [[32mSUCCESS 1[0m in 1.28s]
+[0m09:50:29.181098 [info ] [Thread-2 (]: 1 of 8 OK created sql view model RAW.stg_asset_information ..................... [[32mSUCCESS 1[0m in 1.29s]
+[0m09:50:29.182002 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m09:50:29.182788 [debug] [Thread-3 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m09:50:29.183572 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m09:50:29.185114 [debug] [Thread-7 (]: Began running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m09:50:29.186054 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.131 seconds
+[0m09:50:29.186838 [info ] [Thread-7 (]: 5 of 8 START sql view model RAW.int_asset_daily_metrics ........................ [RUN]
+[0m09:50:29.190374 [info ] [Thread-5 (]: 4 of 8 OK created sql view model RAW.stg_transactions .......................... [[32mSUCCESS 1[0m in 1.30s]
+[0m09:50:29.191218 [debug] [Thread-7 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics'
+[0m09:50:29.192024 [debug] [Thread-5 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m09:50:29.192626 [debug] [Thread-7 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m09:50:29.193826 [debug] [Thread-9 (]: Began running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m09:50:29.202446 [debug] [Thread-7 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m09:50:29.203268 [info ] [Thread-9 (]: 6 of 8 START sql view model RAW.int_customer_transactions ...................... [RUN]
+[0m09:50:29.204422 [debug] [Thread-9 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions'
+[0m09:50:29.205169 [debug] [Thread-7 (]: Began executing node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m09:50:29.205756 [debug] [Thread-9 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m09:50:29.213377 [debug] [Thread-7 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m09:50:29.350098 [debug] [Thread-9 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m09:50:29.352598 [debug] [Thread-7 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m09:50:29.353589 [debug] [Thread-7 (]: On model.dbt_investment_FAR_TRANS.int_asset_daily_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"} */
+create or replace   view FAR_TRANS_DB.RAW.int_asset_daily_metrics
+  
+   as (
+    with asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+),
+
+daily_prices as (
+    select * from FAR_TRANS_DB.RAW.stg_close_prices
+),
+
+daily_returns as (
+    select
+        isin,
+        price_date,
+        close_price,
+        lag(close_price) over (partition by isin order by price_date) as prev_close_price,
+        (close_price - lag(close_price) over (partition by isin order by price_date)) / 
+        lag(close_price) over (partition by isin order by price_date) as daily_return
+    from daily_prices
+)
+
+select
+    dr.*,
+    ai.asset_name,
+    ai.asset_category,
+    ai.asset_sub_category,
+    ai.sector,
+    ai.industry
+from daily_returns dr
+left join asset_info ai on dr.isin = ai.isin
+  );
+[0m09:50:29.354224 [debug] [Thread-9 (]: Began executing node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m09:50:29.354838 [debug] [Thread-7 (]: Opening a new connection, currently in state init
+[0m09:50:29.362632 [debug] [Thread-9 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m09:50:29.365002 [debug] [Thread-9 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m09:50:29.365751 [debug] [Thread-9 (]: On model.dbt_investment_FAR_TRANS.int_customer_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_customer_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.int_customer_transactions
+  
+   as (
+    with customer_info as (
+    select * from FAR_TRANS_DB.RAW.stg_customer_information
+    where valid_to is null  -- Get current customer information
+),
+
+transactions as (
+    select * from FAR_TRANS_DB.RAW.stg_transactions
+),
+
+asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+)
+
+select
+    t.transaction_id,
+    t.customer_id,
+    t.isin,
+    t.transaction_type,
+    t.transaction_date,
+    t.total_value,
+    t.units,
+    t.channel,
+    t.market_id,
+    ci.customer_type,
+    ci.risk_level,
+    ci.investment_capacity,
+    ai.asset_name,
+    ai.asset_category,
+    ai.sector
+from transactions t
+left join customer_info ci on t.customer_id = ci.customer_id
+left join asset_info ai on t.isin = ai.isin
+  );
+[0m09:50:29.366452 [debug] [Thread-9 (]: Opening a new connection, currently in state init
+[0m09:50:30.501884 [debug] [Thread-7 (]: SQL status: SUCCESS 1 in 1.147 seconds
+[0m09:50:30.505607 [info ] [Thread-7 (]: 5 of 8 OK created sql view model RAW.int_asset_daily_metrics ................... [[32mSUCCESS 1[0m in 1.31s]
+[0m09:50:30.506549 [debug] [Thread-7 (]: Finished running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m09:50:30.507647 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m09:50:30.508478 [info ] [Thread-4 (]: 7 of 8 START sql view model RAW.mart_asset_performance ......................... [RUN]
+[0m09:50:30.509235 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_customer_information, now model.dbt_investment_FAR_TRANS.mart_asset_performance)
+[0m09:50:30.509851 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m09:50:30.520172 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m09:50:30.521092 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m09:50:30.528888 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m09:50:30.531005 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m09:50:30.531728 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.mart_asset_performance: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_asset_performance"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_asset_performance
+  
+   as (
+    with daily_metrics as (
+    select * from FAR_TRANS_DB.RAW.int_asset_daily_metrics
+),
+
+asset_stats as (
+    select
+        isin,
+        asset_name,
+        asset_category,
+        asset_sub_category,
+        sector,
+        industry,
+        min(price_date) as first_trading_date,
+        max(price_date) as last_trading_date,
+        min(close_price) as min_price,
+        max(close_price) as max_price,
+        avg(close_price) as avg_price,
+        avg(daily_return) as avg_daily_return,
+        stddev(daily_return) as daily_volatility,
+        count(*) as trading_days
+    from daily_metrics
+    where daily_return is not null
+    group by 1,2,3,4,5,6
+)
+
+select * from asset_stats
+  );
+[0m09:50:30.532328 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m09:50:30.548333 [debug] [Thread-9 (]: SQL status: SUCCESS 1 in 1.182 seconds
+[0m09:50:30.551939 [info ] [Thread-9 (]: 6 of 8 OK created sql view model RAW.int_customer_transactions ................. [[32mSUCCESS 1[0m in 1.35s]
+[0m09:50:30.552940 [debug] [Thread-9 (]: Finished running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m09:50:30.553916 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m09:50:30.554790 [info ] [Thread-2 (]: 8 of 8 START sql view model RAW.mart_customer_portfolio ........................ [RUN]
+[0m09:50:30.555551 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_asset_information, now model.dbt_investment_FAR_TRANS.mart_customer_portfolio)
+[0m09:50:30.556134 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m09:50:30.564320 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m09:50:30.566266 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m09:50:30.575830 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m09:50:30.578313 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m09:50:30.579091 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.mart_customer_portfolio: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_customer_portfolio
+  
+   as (
+    with customer_transactions as (
+    select * from FAR_TRANS_DB.RAW.int_customer_transactions
+),
+
+customer_portfolio as (
+    select
+        customer_id,
+        customer_type,
+        risk_level,
+        investment_capacity,
+        count(distinct transaction_id) as total_transactions,
+        count(distinct isin) as unique_assets,
+        sum(case when transaction_type = 'Buy' then total_value else 0 end) as total_purchases,
+        sum(case when transaction_type = 'Sell' then total_value else 0 end) as total_sales,
+        sum(case when transaction_type = 'Buy' then total_value else -total_value end) as net_investment,
+        count(distinct asset_category) as asset_categories_traded,
+        count(distinct sector) as sectors_invested,
+        min(transaction_date) as first_transaction_date,
+        max(transaction_date) as last_transaction_date
+    from customer_transactions
+    group by 1,2,3,4
+)
+
+select * from customer_portfolio
+  );
+[0m09:50:30.579744 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m09:50:31.518992 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.986 seconds
+[0m09:50:31.519975 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.940 seconds
+[0m09:50:31.523585 [info ] [Thread-4 (]: 7 of 8 OK created sql view model RAW.mart_asset_performance .................... [[32mSUCCESS 1[0m in 1.01s]
+[0m09:50:31.527398 [info ] [Thread-2 (]: 8 of 8 OK created sql view model RAW.mart_customer_portfolio ................... [[32mSUCCESS 1[0m in 0.97s]
+[0m09:50:31.528381 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m09:50:31.529222 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m09:50:31.534265 [debug] [Dummy-1   ]: Connection 'master' was properly closed.
+[0m09:50:31.534896 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_customer_portfolio' was properly closed.
+[0m09:50:31.535358 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_close_prices' was properly closed.
+[0m09:50:31.535811 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance' was properly closed.
+[0m09:50:31.536251 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_transactions' was properly closed.
+[0m09:50:31.536682 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics' was properly closed.
+[0m09:50:31.537149 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions' was properly closed.
+[0m09:50:31.537787 [info ] [Dummy-1   ]: 
+[0m09:50:31.538319 [info ] [Dummy-1   ]: Finished running 8 view models in 0 hours 0 minutes and 6.66 seconds (6.66s).
+[0m09:50:31.540529 [debug] [Dummy-1   ]: Command end result
+[0m09:50:31.610166 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m09:50:31.613173 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m09:50:31.621812 [debug] [Dummy-1   ]: Wrote artifact RunExecutionResult to /tmp/dbt/target/run_results.json
+[0m09:50:31.622409 [info ] [Dummy-1   ]: 
+[0m09:50:31.623073 [info ] [Dummy-1   ]: [32mCompleted successfully[0m
+[0m09:50:31.623578 [info ] [Dummy-1   ]: 
+[0m09:50:31.624105 [info ] [Dummy-1   ]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 TOTAL=8
+[0m09:50:31.626027 [debug] [Dummy-1   ]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 8.876898, "process_in_blocks": "0", "process_kernel_time": 1.55, "process_mem_max_rss": "483740", "process_out_blocks": "0", "process_user_time": 6.36}
+[0m09:50:31.626735 [debug] [Dummy-1   ]: Command `cli run` succeeded at 09:50:31.626463 after 8.88 seconds
+[0m09:50:31.627294 [debug] [Dummy-1   ]: Flushing usage events
+
+
+============================== 19:15:14.309289 | fe247b08-4b4d-458e-8b04-7e5077cb9c70 ==============================
+[0m19:15:14.309289 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m19:15:14.310510 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/tmp/dbt/logs', 'debug': 'False', 'profiles_dir': '/tmp/dbt/', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt ', 'log_format': 'default', 'target_path': '/tmp/dbt/target/', 'introspect': 'True', 'send_anonymous_usage_stats': 'False'}
+[0m19:15:14.706987 [info ] [Dummy-1   ]: Registered adapter: snowflake=1.9.2
+[0m19:15:15.484363 [debug] [Dummy-1   ]: checksum: 53ed91fada2233efb98368d1716b44ab532c83a9c293cf1890b7905d5b45fb25, vars: {}, profile: , target: dev, version: 1.9.4
+[0m19:15:15.878930 [info ] [Dummy-1   ]: Unable to do partial parsing because config vars, config profile, or config target have changed
+[0m19:15:15.879682 [debug] [Dummy-1   ]: previous checksum: 53ed91fada2233efb98368d1716b44ab532c83a9c293cf1890b7905d5b45fb25, current checksum: 6d8301ed5f8f0471e249cbcc8805b42bc5f78a9b258cb4e5c4b012c6ace116b4
+[0m19:15:15.880207 [info ] [Dummy-1   ]: Unable to do partial parsing because profile has changed
+[0m19:15:19.707910 [warn ] [Dummy-1   ]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.far_trans.staging
+- models.far_trans.marts
+- models.far_trans.intermediate
+[0m19:15:19.904385 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m19:15:19.907981 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m19:15:19.966342 [info ] [Dummy-1   ]: Found 8 models, 43 data tests, 4 sources, 917 macros
+[0m19:15:19.970238 [info ] [Dummy-1   ]: 
+[0m19:15:19.970857 [info ] [Dummy-1   ]: Concurrency: 4 threads (target='dev')
+[0m19:15:19.971325 [info ] [Dummy-1   ]: 
+[0m19:15:19.972127 [debug] [Dummy-1   ]: Acquiring new snowflake connection 'master'
+[0m19:15:19.979877 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_FAR_TRANS_DB'
+[0m19:15:20.087077 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB"
+[0m19:15:20.087744 [debug] [ThreadPool]: On list_FAR_TRANS_DB: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "connection_name": "list_FAR_TRANS_DB"} */
+show terse schemas in database FAR_TRANS_DB
+    limit 10000
+[0m19:15:20.088265 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:15:21.037980 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.950 seconds
+[0m19:15:21.042993 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_FAR_TRANS_DB_RAW'
+[0m19:15:21.064357 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:15:21.065018 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m19:15:21.065520 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:15:21.825217 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.759 seconds
+[0m19:15:21.831505 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:15:21.832238 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+show objects in FAR_TRANS_DB.RAW
+    limit 10000
+    
+;
+[0m19:15:21.992634 [debug] [ThreadPool]: SQL status: SUCCESS 15 in 0.160 seconds
+[0m19:15:21.995715 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:15:21.996314 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m19:15:22.089446 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.092 seconds
+[0m19:15:22.103049 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:15:22.103861 [debug] [Thread-3 (]: Began running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:15:22.104554 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:15:22.105256 [debug] [Thread-5 (]: Began running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:15:22.106130 [info ] [Thread-2 (]: 1 of 8 START sql view model RAW.stg_asset_information .......................... [RUN]
+[0m19:15:22.106986 [info ] [Thread-3 (]: 2 of 8 START sql view model RAW.stg_close_prices ............................... [RUN]
+[0m19:15:22.107754 [info ] [Thread-4 (]: 3 of 8 START sql view model RAW.stg_customer_information ....................... [RUN]
+[0m19:15:22.108528 [info ] [Thread-5 (]: 4 of 8 START sql view model RAW.stg_transactions ............................... [RUN]
+[0m19:15:22.109800 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB_RAW, now model.dbt_investment_FAR_TRANS.stg_asset_information)
+[0m19:15:22.110509 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB, now model.dbt_investment_FAR_TRANS.stg_close_prices)
+[0m19:15:22.111288 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_customer_information'
+[0m19:15:22.112022 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_transactions'
+[0m19:15:22.112648 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:15:22.113262 [debug] [Thread-3 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:15:22.113864 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:15:22.114454 [debug] [Thread-5 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:15:22.128518 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:15:22.138774 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:15:22.147138 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:15:22.155732 [debug] [Thread-5 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:15:22.156911 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:15:22.157831 [debug] [Thread-3 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:15:22.158710 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:15:22.171444 [debug] [Thread-5 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:15:22.247839 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:15:22.248296 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:15:22.257852 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:15:22.266001 [debug] [Thread-5 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:15:22.268306 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:15:22.269883 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:15:22.271723 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:15:22.272571 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.stg_asset_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "node_id": "model.dbt_investment_FAR_TRANS.stg_asset_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_asset_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.asset_information
+),
+
+renamed as (
+    select
+        isin,
+        assetname as asset_name,
+        assetshortname as asset_short_name,
+        assetcategory as asset_category,
+        assetsubcategory as asset_sub_category,
+        marketid as market_id,
+        sector,
+        industry,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by isin order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m19:15:22.274088 [debug] [Thread-5 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:15:22.274784 [debug] [Thread-3 (]: On model.dbt_investment_FAR_TRANS.stg_close_prices: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "node_id": "model.dbt_investment_FAR_TRANS.stg_close_prices"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_close_prices
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.close_prices
+),
+
+renamed as (
+    select
+        isin,
+        timestamp::timestamp as price_date,
+        closeprice::decimal(20,4) as close_price
+    from source
+)
+
+select * from renamed
+  );
+[0m19:15:22.275568 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.stg_customer_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "node_id": "model.dbt_investment_FAR_TRANS.stg_customer_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_customer_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.customer_information
+),
+
+renamed as (
+    select
+        customerid as customer_id,
+        customertype as customer_type,
+        risklevel as risk_level,
+        investmentcapacity as investment_capacity,
+        lastquestionnairedate::date as last_questionnaire_date,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by customerid order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m19:15:22.276239 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m19:15:22.276899 [debug] [Thread-5 (]: On model.dbt_investment_FAR_TRANS.stg_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "node_id": "model.dbt_investment_FAR_TRANS.stg_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_transactions
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.transactions
+),
+
+renamed as (
+    select
+        customerID as customer_id,
+        ISIN as isin,
+        transactionID as transaction_id,
+        transactionType as transaction_type,
+        timestamp::timestamp as transaction_date,
+        totalValue::decimal(20,4) as total_value,
+        units::decimal(20,4) as units,
+        channel,
+        marketID as market_id
+    from source
+)
+
+select * from renamed
+  );
+[0m19:15:22.277504 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m19:15:22.278064 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m19:15:22.278946 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m19:15:23.262243 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.984 seconds
+[0m19:15:23.263264 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 0.986 seconds
+[0m19:15:23.264140 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 0.988 seconds
+[0m19:15:23.307267 [info ] [Thread-4 (]: 3 of 8 OK created sql view model RAW.stg_customer_information .................. [[32mSUCCESS 1[0m in 1.19s]
+[0m19:15:23.308199 [info ] [Thread-3 (]: 2 of 8 OK created sql view model RAW.stg_close_prices .......................... [[32mSUCCESS 1[0m in 1.19s]
+[0m19:15:23.309055 [info ] [Thread-2 (]: 1 of 8 OK created sql view model RAW.stg_asset_information ..................... [[32mSUCCESS 1[0m in 1.20s]
+[0m19:15:23.309978 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:15:23.310837 [debug] [Thread-3 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:15:23.311628 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:15:23.313181 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:15:23.314060 [info ] [Thread-4 (]: 5 of 8 START sql view model RAW.int_asset_daily_metrics ........................ [RUN]
+[0m19:15:23.314856 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_customer_information, now model.dbt_investment_FAR_TRANS.int_asset_daily_metrics)
+[0m19:15:23.315452 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:15:23.325663 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:15:23.326562 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:15:23.334643 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:15:23.335642 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.057 seconds
+[0m19:15:23.339359 [info ] [Thread-5 (]: 4 of 8 OK created sql view model RAW.stg_transactions .......................... [[32mSUCCESS 1[0m in 1.23s]
+[0m19:15:23.341383 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:15:23.342252 [debug] [Thread-5 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:15:23.343023 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.int_asset_daily_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "node_id": "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"} */
+create or replace   view FAR_TRANS_DB.RAW.int_asset_daily_metrics
+  
+   as (
+    with asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+),
+
+daily_prices as (
+    select * from FAR_TRANS_DB.RAW.stg_close_prices
+),
+
+daily_returns as (
+    select
+        isin,
+        price_date,
+        close_price,
+        lag(close_price) over (partition by isin order by price_date) as prev_close_price,
+        (close_price - lag(close_price) over (partition by isin order by price_date)) / 
+        lag(close_price) over (partition by isin order by price_date) as daily_return
+    from daily_prices
+)
+
+select
+    dr.*,
+    ai.asset_name,
+    ai.asset_category,
+    ai.asset_sub_category,
+    ai.sector,
+    ai.industry
+from daily_returns dr
+left join asset_info ai on dr.isin = ai.isin
+  );
+[0m19:15:23.344420 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:15:23.345090 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m19:15:23.345939 [info ] [Thread-2 (]: 6 of 8 START sql view model RAW.int_customer_transactions ...................... [RUN]
+[0m19:15:23.346923 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_asset_information, now model.dbt_investment_FAR_TRANS.int_customer_transactions)
+[0m19:15:23.347551 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:15:23.356357 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:15:23.357223 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:15:23.366668 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:15:23.368923 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:15:23.369658 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.int_customer_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "node_id": "model.dbt_investment_FAR_TRANS.int_customer_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.int_customer_transactions
+  
+   as (
+    with customer_info as (
+    select * from FAR_TRANS_DB.RAW.stg_customer_information
+    where valid_to is null  -- Get current customer information
+),
+
+transactions as (
+    select * from FAR_TRANS_DB.RAW.stg_transactions
+),
+
+asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+)
+
+select
+    t.transaction_id,
+    t.customer_id,
+    t.isin,
+    t.transaction_type,
+    t.transaction_date,
+    t.total_value,
+    t.units,
+    t.channel,
+    t.market_id,
+    ci.customer_type,
+    ci.risk_level,
+    ci.investment_capacity,
+    ai.asset_name,
+    ai.asset_category,
+    ai.sector
+from transactions t
+left join customer_info ci on t.customer_id = ci.customer_id
+left join asset_info ai on t.isin = ai.isin
+  );
+[0m19:15:23.370294 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m19:15:24.328459 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 0.983 seconds
+[0m19:15:24.332011 [info ] [Thread-4 (]: 5 of 8 OK created sql view model RAW.int_asset_daily_metrics ................... [[32mSUCCESS 1[0m in 1.02s]
+[0m19:15:24.332925 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:15:24.334047 [debug] [Thread-5 (]: Began running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:15:24.334983 [info ] [Thread-5 (]: 7 of 8 START sql view model RAW.mart_asset_performance ......................... [RUN]
+[0m19:15:24.335742 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_transactions, now model.dbt_investment_FAR_TRANS.mart_asset_performance)
+[0m19:15:24.336321 [debug] [Thread-5 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:15:24.344582 [debug] [Thread-5 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:15:24.345483 [debug] [Thread-5 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:15:24.355561 [debug] [Thread-5 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:15:24.357688 [debug] [Thread-5 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:15:24.358426 [debug] [Thread-5 (]: On model.dbt_investment_FAR_TRANS.mart_asset_performance: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "node_id": "model.dbt_investment_FAR_TRANS.mart_asset_performance"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_asset_performance
+  
+   as (
+    with daily_metrics as (
+    select * from FAR_TRANS_DB.RAW.int_asset_daily_metrics
+),
+
+asset_stats as (
+    select
+        isin,
+        asset_name,
+        asset_category,
+        asset_sub_category,
+        sector,
+        industry,
+        min(price_date) as first_trading_date,
+        max(price_date) as last_trading_date,
+        min(close_price) as min_price,
+        max(close_price) as max_price,
+        avg(close_price) as avg_price,
+        avg(daily_return) as avg_daily_return,
+        stddev(daily_return) as daily_volatility,
+        count(*) as trading_days
+    from daily_metrics
+    where daily_return is not null
+    group by 1,2,3,4,5,6
+)
+
+select * from asset_stats
+  );
+[0m19:15:24.359038 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m19:15:24.382886 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.012 seconds
+[0m19:15:24.386405 [info ] [Thread-2 (]: 6 of 8 OK created sql view model RAW.int_customer_transactions ................. [[32mSUCCESS 1[0m in 1.04s]
+[0m19:15:24.387327 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:15:24.388276 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:15:24.389114 [info ] [Thread-4 (]: 8 of 8 START sql view model RAW.mart_customer_portfolio ........................ [RUN]
+[0m19:15:24.389855 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.int_asset_daily_metrics, now model.dbt_investment_FAR_TRANS.mart_customer_portfolio)
+[0m19:15:24.390452 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:15:24.576763 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:15:24.578216 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:15:24.586271 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:15:24.589005 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:15:24.589792 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.mart_customer_portfolio: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "dev", "node_id": "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_customer_portfolio
+  
+   as (
+    with customer_transactions as (
+    select * from FAR_TRANS_DB.RAW.int_customer_transactions
+),
+
+customer_portfolio as (
+    select
+        customer_id,
+        customer_type,
+        risk_level,
+        investment_capacity,
+        count(distinct transaction_id) as total_transactions,
+        count(distinct isin) as unique_assets,
+        sum(case when transaction_type = 'Buy' then total_value else 0 end) as total_purchases,
+        sum(case when transaction_type = 'Sell' then total_value else 0 end) as total_sales,
+        sum(case when transaction_type = 'Buy' then total_value else -total_value end) as net_investment,
+        count(distinct asset_category) as asset_categories_traded,
+        count(distinct sector) as sectors_invested,
+        min(transaction_date) as first_transaction_date,
+        max(transaction_date) as last_transaction_date
+    from customer_transactions
+    group by 1,2,3,4
+)
+
+select * from customer_portfolio
+  );
+[0m19:15:24.590443 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m19:15:25.815497 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.456 seconds
+[0m19:15:25.819107 [info ] [Thread-5 (]: 7 of 8 OK created sql view model RAW.mart_asset_performance .................... [[32mSUCCESS 1[0m in 1.48s]
+[0m19:15:25.820040 [debug] [Thread-5 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:15:25.992088 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.401 seconds
+[0m19:15:25.995749 [info ] [Thread-4 (]: 8 of 8 OK created sql view model RAW.mart_customer_portfolio ................... [[32mSUCCESS 1[0m in 1.61s]
+[0m19:15:25.996684 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:15:26.000040 [debug] [Dummy-1   ]: Connection 'master' was properly closed.
+[0m19:15:26.000749 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_close_prices' was properly closed.
+[0m19:15:26.001218 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions' was properly closed.
+[0m19:15:26.001667 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_customer_portfolio' was properly closed.
+[0m19:15:26.002106 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance' was properly closed.
+[0m19:15:26.002762 [info ] [Dummy-1   ]: 
+[0m19:15:26.003334 [info ] [Dummy-1   ]: Finished running 8 view models in 0 hours 0 minutes and 6.03 seconds (6.03s).
+[0m19:15:26.005546 [debug] [Dummy-1   ]: Command end result
+[0m19:15:26.076690 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m19:15:26.080019 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m19:15:26.088163 [debug] [Dummy-1   ]: Wrote artifact RunExecutionResult to /tmp/dbt/target/run_results.json
+[0m19:15:26.088751 [info ] [Dummy-1   ]: 
+[0m19:15:26.089412 [info ] [Dummy-1   ]: [32mCompleted successfully[0m
+[0m19:15:26.089917 [info ] [Dummy-1   ]: 
+[0m19:15:26.090474 [info ] [Dummy-1   ]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 TOTAL=8
+[0m19:15:26.092319 [debug] [Dummy-1   ]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 11.882593, "process_in_blocks": "0", "process_kernel_time": 1.46, "process_mem_max_rss": "506040", "process_out_blocks": "0", "process_user_time": 10.1}
+[0m19:15:26.093020 [debug] [Dummy-1   ]: Command `cli run` succeeded at 19:15:26.092744 after 11.88 seconds
+[0m19:15:26.093624 [debug] [Dummy-1   ]: Flushing usage events
+
+
+============================== 19:15:49.052080 | f22d27a5-f83c-4a7b-bf17-f8e03aea6be9 ==============================
+[0m19:15:49.052080 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m19:15:49.053272 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/tmp/dbt/', 'debug': 'False', 'version_check': 'True', 'log_path': '/tmp/dbt/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt ', 'log_format': 'default', 'target_path': '/tmp/dbt/target/', 'introspect': 'True', 'send_anonymous_usage_stats': 'False'}
+[0m19:15:49.433724 [info ] [Dummy-1   ]: Registered adapter: snowflake=1.9.2
+[0m19:15:50.226842 [debug] [Dummy-1   ]: checksum: 6d8301ed5f8f0471e249cbcc8805b42bc5f78a9b258cb4e5c4b012c6ace116b4, vars: {}, profile: , target: prod, version: 1.9.4
+[0m19:15:50.595060 [info ] [Dummy-1   ]: Unable to do partial parsing because config vars, config profile, or config target have changed
+[0m19:15:50.595814 [debug] [Dummy-1   ]: previous checksum: 6d8301ed5f8f0471e249cbcc8805b42bc5f78a9b258cb4e5c4b012c6ace116b4, current checksum: 53ed91fada2233efb98368d1716b44ab532c83a9c293cf1890b7905d5b45fb25
+[0m19:15:50.596351 [info ] [Dummy-1   ]: Unable to do partial parsing because profile has changed
+[0m19:15:54.217804 [warn ] [Dummy-1   ]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.far_trans.marts
+- models.far_trans.staging
+- models.far_trans.intermediate
+[0m19:15:54.407470 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m19:15:54.410858 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m19:15:54.465390 [info ] [Dummy-1   ]: Found 8 models, 43 data tests, 4 sources, 917 macros
+[0m19:15:54.469135 [info ] [Dummy-1   ]: 
+[0m19:15:54.469714 [info ] [Dummy-1   ]: Concurrency: 8 threads (target='prod')
+[0m19:15:54.470176 [info ] [Dummy-1   ]: 
+[0m19:15:54.470996 [debug] [Dummy-1   ]: Acquiring new snowflake connection 'master'
+[0m19:15:54.478485 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_FAR_TRANS_DB'
+[0m19:15:54.582813 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB"
+[0m19:15:54.583552 [debug] [ThreadPool]: On list_FAR_TRANS_DB: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB"} */
+show terse schemas in database FAR_TRANS_DB
+    limit 10000
+[0m19:15:54.584067 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:15:55.324089 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.740 seconds
+[0m19:15:55.328508 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB, now list_FAR_TRANS_DB_RAW)
+[0m19:15:55.348453 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:15:55.349065 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m19:15:55.349542 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:15:56.104293 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.755 seconds
+[0m19:15:56.110084 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:15:56.111084 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+show objects in FAR_TRANS_DB.RAW
+    limit 10000
+    
+;
+[0m19:15:56.246772 [debug] [ThreadPool]: SQL status: SUCCESS 15 in 0.135 seconds
+[0m19:15:56.249732 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:15:56.250296 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m19:15:56.326657 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.076 seconds
+[0m19:15:56.341490 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:15:56.342222 [debug] [Thread-3 (]: Began running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:15:56.343403 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:15:56.344114 [debug] [Thread-5 (]: Began running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:15:56.345008 [info ] [Thread-2 (]: 1 of 8 START sql view model RAW.stg_asset_information .......................... [RUN]
+[0m19:15:56.345816 [info ] [Thread-3 (]: 2 of 8 START sql view model RAW.stg_close_prices ............................... [RUN]
+[0m19:15:56.346605 [info ] [Thread-4 (]: 3 of 8 START sql view model RAW.stg_customer_information ....................... [RUN]
+[0m19:15:56.347378 [info ] [Thread-5 (]: 4 of 8 START sql view model RAW.stg_transactions ............................... [RUN]
+[0m19:15:56.348184 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB_RAW, now model.dbt_investment_FAR_TRANS.stg_asset_information)
+[0m19:15:56.348969 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_close_prices'
+[0m19:15:56.349715 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_customer_information'
+[0m19:15:56.350436 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_transactions'
+[0m19:15:56.351042 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:15:56.351596 [debug] [Thread-3 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:15:56.352153 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:15:56.352695 [debug] [Thread-5 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:15:56.366468 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:15:56.374449 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:15:56.384159 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:15:56.391499 [debug] [Thread-5 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:15:56.392622 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:15:56.393530 [debug] [Thread-3 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:15:56.394362 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:15:56.411313 [debug] [Thread-5 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:15:56.479604 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:15:56.482140 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:15:56.485711 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:15:56.494648 [debug] [Thread-5 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:15:56.496432 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:15:56.498171 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:15:56.500055 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:15:56.500861 [debug] [Thread-3 (]: On model.dbt_investment_FAR_TRANS.stg_close_prices: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_close_prices"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_close_prices
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.close_prices
+),
+
+renamed as (
+    select
+        isin,
+        timestamp::timestamp as price_date,
+        closeprice::decimal(20,4) as close_price
+    from source
+)
+
+select * from renamed
+  );
+[0m19:15:56.502532 [debug] [Thread-5 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:15:56.503289 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.stg_customer_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_customer_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_customer_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.customer_information
+),
+
+renamed as (
+    select
+        customerid as customer_id,
+        customertype as customer_type,
+        risklevel as risk_level,
+        investmentcapacity as investment_capacity,
+        lastquestionnairedate::date as last_questionnaire_date,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by customerid order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m19:15:56.504087 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.stg_asset_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_asset_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_asset_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.asset_information
+),
+
+renamed as (
+    select
+        isin,
+        assetname as asset_name,
+        assetshortname as asset_short_name,
+        assetcategory as asset_category,
+        assetsubcategory as asset_sub_category,
+        marketid as market_id,
+        sector,
+        industry,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by isin order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m19:15:56.504726 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m19:15:56.505382 [debug] [Thread-5 (]: On model.dbt_investment_FAR_TRANS.stg_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_transactions
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.transactions
+),
+
+renamed as (
+    select
+        customerID as customer_id,
+        ISIN as isin,
+        transactionID as transaction_id,
+        transactionType as transaction_type,
+        timestamp::timestamp as transaction_date,
+        totalValue::decimal(20,4) as total_value,
+        units::decimal(20,4) as units,
+        channel,
+        marketID as market_id
+    from source
+)
+
+select * from renamed
+  );
+[0m19:15:56.505987 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m19:15:56.506612 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m19:15:56.507421 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m19:15:59.702822 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 3.196 seconds
+[0m19:15:59.736456 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 3.232 seconds
+[0m19:15:59.741414 [info ] [Thread-2 (]: 1 of 8 OK created sql view model RAW.stg_asset_information ..................... [[32mSUCCESS 1[0m in 3.39s]
+[0m19:15:59.742322 [info ] [Thread-3 (]: 2 of 8 OK created sql view model RAW.stg_close_prices .......................... [[32mSUCCESS 1[0m in 3.39s]
+[0m19:15:59.743262 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:15:59.744054 [debug] [Thread-3 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:15:59.745278 [debug] [Thread-7 (]: Began running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:15:59.746045 [info ] [Thread-7 (]: 5 of 8 START sql view model RAW.int_asset_daily_metrics ........................ [RUN]
+[0m19:15:59.746880 [debug] [Thread-7 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics'
+[0m19:15:59.747444 [debug] [Thread-7 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:15:59.755729 [debug] [Thread-7 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:15:59.756574 [debug] [Thread-7 (]: Began executing node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:15:59.763983 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 3.258 seconds
+[0m19:15:59.767078 [debug] [Thread-7 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:15:59.770483 [info ] [Thread-4 (]: 3 of 8 OK created sql view model RAW.stg_customer_information .................. [[32mSUCCESS 1[0m in 3.42s]
+[0m19:15:59.771619 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:15:59.773636 [debug] [Thread-7 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:15:59.774627 [debug] [Thread-7 (]: On model.dbt_investment_FAR_TRANS.int_asset_daily_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"} */
+create or replace   view FAR_TRANS_DB.RAW.int_asset_daily_metrics
+  
+   as (
+    with asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+),
+
+daily_prices as (
+    select * from FAR_TRANS_DB.RAW.stg_close_prices
+),
+
+daily_returns as (
+    select
+        isin,
+        price_date,
+        close_price,
+        lag(close_price) over (partition by isin order by price_date) as prev_close_price,
+        (close_price - lag(close_price) over (partition by isin order by price_date)) / 
+        lag(close_price) over (partition by isin order by price_date) as daily_return
+    from daily_prices
+)
+
+select
+    dr.*,
+    ai.asset_name,
+    ai.asset_category,
+    ai.asset_sub_category,
+    ai.sector,
+    ai.industry
+from daily_returns dr
+left join asset_info ai on dr.isin = ai.isin
+  );
+[0m19:15:59.775265 [debug] [Thread-7 (]: Opening a new connection, currently in state init
+[0m19:15:59.793788 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 3.286 seconds
+[0m19:15:59.797243 [info ] [Thread-5 (]: 4 of 8 OK created sql view model RAW.stg_transactions .......................... [[32mSUCCESS 1[0m in 3.45s]
+[0m19:15:59.798129 [debug] [Thread-5 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:15:59.799134 [debug] [Thread-9 (]: Began running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:15:59.799924 [info ] [Thread-9 (]: 6 of 8 START sql view model RAW.int_customer_transactions ...................... [RUN]
+[0m19:15:59.800719 [debug] [Thread-9 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions'
+[0m19:15:59.801294 [debug] [Thread-9 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:15:59.809817 [debug] [Thread-9 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:15:59.810666 [debug] [Thread-9 (]: Began executing node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:15:59.819695 [debug] [Thread-9 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:15:59.822685 [debug] [Thread-9 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:15:59.823454 [debug] [Thread-9 (]: On model.dbt_investment_FAR_TRANS.int_customer_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_customer_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.int_customer_transactions
+  
+   as (
+    with customer_info as (
+    select * from FAR_TRANS_DB.RAW.stg_customer_information
+    where valid_to is null  -- Get current customer information
+),
+
+transactions as (
+    select * from FAR_TRANS_DB.RAW.stg_transactions
+),
+
+asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+)
+
+select
+    t.transaction_id,
+    t.customer_id,
+    t.isin,
+    t.transaction_type,
+    t.transaction_date,
+    t.total_value,
+    t.units,
+    t.channel,
+    t.market_id,
+    ci.customer_type,
+    ci.risk_level,
+    ci.investment_capacity,
+    ai.asset_name,
+    ai.asset_category,
+    ai.sector
+from transactions t
+left join customer_info ci on t.customer_id = ci.customer_id
+left join asset_info ai on t.isin = ai.isin
+  );
+[0m19:15:59.824087 [debug] [Thread-9 (]: Opening a new connection, currently in state init
+[0m19:16:00.951401 [debug] [Thread-7 (]: SQL status: SUCCESS 1 in 1.176 seconds
+[0m19:16:00.955002 [info ] [Thread-7 (]: 5 of 8 OK created sql view model RAW.int_asset_daily_metrics ................... [[32mSUCCESS 1[0m in 1.21s]
+[0m19:16:00.955896 [debug] [Thread-9 (]: SQL status: SUCCESS 1 in 1.132 seconds
+[0m19:16:00.956724 [debug] [Thread-7 (]: Finished running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:16:00.959666 [info ] [Thread-9 (]: 6 of 8 OK created sql view model RAW.int_customer_transactions ................. [[32mSUCCESS 1[0m in 1.16s]
+[0m19:16:00.960832 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:16:00.961580 [debug] [Thread-9 (]: Finished running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:16:00.962311 [info ] [Thread-2 (]: 7 of 8 START sql view model RAW.mart_asset_performance ......................... [RUN]
+[0m19:16:00.963469 [debug] [Thread-8 (]: Began running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:16:00.964138 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_asset_information, now model.dbt_investment_FAR_TRANS.mart_asset_performance)
+[0m19:16:00.964860 [info ] [Thread-8 (]: 8 of 8 START sql view model RAW.mart_customer_portfolio ........................ [RUN]
+[0m19:16:00.965479 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:16:00.966197 [debug] [Thread-8 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.mart_customer_portfolio'
+[0m19:16:00.973952 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:16:00.974573 [debug] [Thread-8 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:16:00.982313 [debug] [Thread-8 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:16:00.982877 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:16:00.991625 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:16:00.992240 [debug] [Thread-8 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:16:00.999466 [debug] [Thread-8 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:16:01.001342 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:16:01.002222 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.mart_asset_performance: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_asset_performance"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_asset_performance
+  
+   as (
+    with daily_metrics as (
+    select * from FAR_TRANS_DB.RAW.int_asset_daily_metrics
+),
+
+asset_stats as (
+    select
+        isin,
+        asset_name,
+        asset_category,
+        asset_sub_category,
+        sector,
+        industry,
+        min(price_date) as first_trading_date,
+        max(price_date) as last_trading_date,
+        min(close_price) as min_price,
+        max(close_price) as max_price,
+        avg(close_price) as avg_price,
+        avg(daily_return) as avg_daily_return,
+        stddev(daily_return) as daily_volatility,
+        count(*) as trading_days
+    from daily_metrics
+    where daily_return is not null
+    group by 1,2,3,4,5,6
+)
+
+select * from asset_stats
+  );
+[0m19:16:01.004402 [debug] [Thread-8 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:16:01.004988 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m19:16:01.005718 [debug] [Thread-8 (]: On model.dbt_investment_FAR_TRANS.mart_customer_portfolio: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_customer_portfolio
+  
+   as (
+    with customer_transactions as (
+    select * from FAR_TRANS_DB.RAW.int_customer_transactions
+),
+
+customer_portfolio as (
+    select
+        customer_id,
+        customer_type,
+        risk_level,
+        investment_capacity,
+        count(distinct transaction_id) as total_transactions,
+        count(distinct isin) as unique_assets,
+        sum(case when transaction_type = 'Buy' then total_value else 0 end) as total_purchases,
+        sum(case when transaction_type = 'Sell' then total_value else 0 end) as total_sales,
+        sum(case when transaction_type = 'Buy' then total_value else -total_value end) as net_investment,
+        count(distinct asset_category) as asset_categories_traded,
+        count(distinct sector) as sectors_invested,
+        min(transaction_date) as first_transaction_date,
+        max(transaction_date) as last_transaction_date
+    from customer_transactions
+    group by 1,2,3,4
+)
+
+select * from customer_portfolio
+  );
+[0m19:16:01.006610 [debug] [Thread-8 (]: Opening a new connection, currently in state init
+[0m19:16:02.259729 [debug] [Thread-8 (]: SQL status: SUCCESS 1 in 1.253 seconds
+[0m19:16:02.260628 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.256 seconds
+[0m19:16:02.264098 [info ] [Thread-8 (]: 8 of 8 OK created sql view model RAW.mart_customer_portfolio ................... [[32mSUCCESS 1[0m in 1.30s]
+[0m19:16:02.267391 [info ] [Thread-2 (]: 7 of 8 OK created sql view model RAW.mart_asset_performance .................... [[32mSUCCESS 1[0m in 1.30s]
+[0m19:16:02.268321 [debug] [Thread-8 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:16:02.269097 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:16:02.274499 [debug] [Dummy-1   ]: Connection 'master' was properly closed.
+[0m19:16:02.275066 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance' was properly closed.
+[0m19:16:02.275526 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_close_prices' was properly closed.
+[0m19:16:02.275979 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_customer_information' was properly closed.
+[0m19:16:02.276447 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_transactions' was properly closed.
+[0m19:16:02.276903 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics' was properly closed.
+[0m19:16:02.277361 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions' was properly closed.
+[0m19:16:02.277803 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_customer_portfolio' was properly closed.
+[0m19:16:02.278472 [info ] [Dummy-1   ]: 
+[0m19:16:02.279031 [info ] [Dummy-1   ]: Finished running 8 view models in 0 hours 0 minutes and 7.81 seconds (7.81s).
+[0m19:16:02.281367 [debug] [Dummy-1   ]: Command end result
+[0m19:16:02.494336 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m19:16:02.497333 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m19:16:02.505420 [debug] [Dummy-1   ]: Wrote artifact RunExecutionResult to /tmp/dbt/target/run_results.json
+[0m19:16:02.505996 [info ] [Dummy-1   ]: 
+[0m19:16:02.506683 [info ] [Dummy-1   ]: [32mCompleted successfully[0m
+[0m19:16:02.507200 [info ] [Dummy-1   ]: 
+[0m19:16:02.507733 [info ] [Dummy-1   ]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 TOTAL=8
+[0m19:16:02.509528 [debug] [Dummy-1   ]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 13.552504, "process_in_blocks": "0", "process_kernel_time": 1.59, "process_mem_max_rss": "534924", "process_out_blocks": "0", "process_user_time": 9.28}
+[0m19:16:02.510217 [debug] [Dummy-1   ]: Command `cli run` succeeded at 19:16:02.509948 after 13.55 seconds
+[0m19:16:02.510802 [debug] [Dummy-1   ]: Flushing usage events
+
+
+============================== 19:30:47.525422 | 1f277789-c6bd-4d88-b379-3d4f4f411716 ==============================
+[0m19:30:47.525422 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m19:30:47.526654 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': '/tmp/dbt/logs', 'fail_fast': 'False', 'profiles_dir': '/tmp/dbt/', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt ', 'target_path': '/tmp/dbt/target/', 'log_format': 'default', 'send_anonymous_usage_stats': 'False'}
+[0m19:30:47.928299 [info ] [Dummy-1   ]: Registered adapter: snowflake=1.9.2
+[0m19:30:48.649333 [debug] [Dummy-1   ]: checksum: 6d8301ed5f8f0471e249cbcc8805b42bc5f78a9b258cb4e5c4b012c6ace116b4, vars: {}, profile: , target: prod, version: 1.9.4
+[0m19:30:49.203765 [debug] [Dummy-1   ]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m19:30:49.204458 [debug] [Dummy-1   ]: Partial parsing enabled, no changes found, skipping parsing
+[0m19:30:49.214715 [warn ] [Dummy-1   ]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.far_trans.marts
+- models.far_trans.staging
+- models.far_trans.intermediate
+[0m19:30:49.465577 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m19:30:49.468719 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m19:30:49.529185 [info ] [Dummy-1   ]: Found 8 models, 43 data tests, 4 sources, 917 macros
+[0m19:30:49.533164 [info ] [Dummy-1   ]: 
+[0m19:30:49.533865 [info ] [Dummy-1   ]: Concurrency: 8 threads (target='prod')
+[0m19:30:49.534398 [info ] [Dummy-1   ]: 
+[0m19:30:49.535371 [debug] [Dummy-1   ]: Acquiring new snowflake connection 'master'
+[0m19:30:49.543544 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_FAR_TRANS_DB'
+[0m19:30:49.685707 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB"
+[0m19:30:49.686425 [debug] [ThreadPool]: On list_FAR_TRANS_DB: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB"} */
+show terse schemas in database FAR_TRANS_DB
+    limit 10000
+[0m19:30:49.686989 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:30:50.447290 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 0.760 seconds
+[0m19:30:50.452125 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB, now list_FAR_TRANS_DB_RAW)
+[0m19:30:50.471935 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:30:50.472622 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m19:30:50.473132 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:30:51.188303 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.715 seconds
+[0m19:30:51.194360 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:30:51.194995 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+show objects in FAR_TRANS_DB.RAW
+    limit 10000
+    
+;
+[0m19:30:52.106444 [debug] [ThreadPool]: SQL status: SUCCESS 15 in 0.911 seconds
+[0m19:30:52.109730 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:30:52.110337 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m19:30:52.214763 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.104 seconds
+[0m19:30:52.234033 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:30:52.234796 [debug] [Thread-3 (]: Began running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:30:52.235478 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:30:52.236194 [debug] [Thread-5 (]: Began running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:30:52.237190 [info ] [Thread-2 (]: 1 of 8 START sql view model RAW.stg_asset_information .......................... [RUN]
+[0m19:30:52.238088 [info ] [Thread-3 (]: 2 of 8 START sql view model RAW.stg_close_prices ............................... [RUN]
+[0m19:30:52.238967 [info ] [Thread-4 (]: 3 of 8 START sql view model RAW.stg_customer_information ....................... [RUN]
+[0m19:30:52.239762 [info ] [Thread-5 (]: 4 of 8 START sql view model RAW.stg_transactions ............................... [RUN]
+[0m19:30:52.240663 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB_RAW, now model.dbt_investment_FAR_TRANS.stg_asset_information)
+[0m19:30:52.241523 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_close_prices'
+[0m19:30:52.242309 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_customer_information'
+[0m19:30:52.243135 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_transactions'
+[0m19:30:52.243796 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:30:52.244460 [debug] [Thread-3 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:30:52.245079 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:30:52.245657 [debug] [Thread-5 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:30:52.261876 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:30:52.270544 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:30:52.278994 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:30:52.289543 [debug] [Thread-5 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:30:52.290848 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:30:52.291602 [debug] [Thread-3 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:30:52.292590 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:30:52.309291 [debug] [Thread-5 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:30:52.363470 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:30:52.383686 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:30:52.392104 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:30:52.400205 [debug] [Thread-5 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:30:52.402619 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:30:52.404312 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:30:52.406235 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:30:52.406988 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.stg_asset_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_asset_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_asset_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.asset_information
+),
+
+renamed as (
+    select
+        isin,
+        assetname as asset_name,
+        assetshortname as asset_short_name,
+        assetcategory as asset_category,
+        assetsubcategory as asset_sub_category,
+        marketid as market_id,
+        sector,
+        industry,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by isin order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m19:30:52.408693 [debug] [Thread-5 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:30:52.409357 [debug] [Thread-3 (]: On model.dbt_investment_FAR_TRANS.stg_close_prices: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_close_prices"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_close_prices
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.close_prices
+),
+
+renamed as (
+    select
+        isin,
+        timestamp::timestamp as price_date,
+        closeprice::decimal(20,4) as close_price
+    from source
+)
+
+select * from renamed
+  );
+[0m19:30:52.410093 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.stg_customer_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_customer_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_customer_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.customer_information
+),
+
+renamed as (
+    select
+        customerid as customer_id,
+        customertype as customer_type,
+        risklevel as risk_level,
+        investmentcapacity as investment_capacity,
+        lastquestionnairedate::date as last_questionnaire_date,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by customerid order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m19:30:52.410802 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m19:30:52.411479 [debug] [Thread-5 (]: On model.dbt_investment_FAR_TRANS.stg_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_transactions
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.transactions
+),
+
+renamed as (
+    select
+        customerID as customer_id,
+        ISIN as isin,
+        transactionID as transaction_id,
+        transactionType as transaction_type,
+        timestamp::timestamp as transaction_date,
+        totalValue::decimal(20,4) as total_value,
+        units::decimal(20,4) as units,
+        channel,
+        marketID as market_id
+    from source
+)
+
+select * from renamed
+  );
+[0m19:30:52.412155 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m19:30:52.412758 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m19:30:52.413538 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m19:30:53.596546 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.184 seconds
+[0m19:30:53.609592 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.196 seconds
+[0m19:30:53.638424 [info ] [Thread-4 (]: 3 of 8 OK created sql view model RAW.stg_customer_information .................. [[32mSUCCESS 1[0m in 1.39s]
+[0m19:30:53.639405 [info ] [Thread-5 (]: 4 of 8 OK created sql view model RAW.stg_transactions .......................... [[32mSUCCESS 1[0m in 1.39s]
+[0m19:30:53.640394 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:30:53.641229 [debug] [Thread-5 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:30:53.659376 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.247 seconds
+[0m19:30:53.663048 [info ] [Thread-3 (]: 2 of 8 OK created sql view model RAW.stg_close_prices .......................... [[32mSUCCESS 1[0m in 1.42s]
+[0m19:30:53.664008 [debug] [Thread-3 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:30:53.780090 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.369 seconds
+[0m19:30:53.783751 [info ] [Thread-2 (]: 1 of 8 OK created sql view model RAW.stg_asset_information ..................... [[32mSUCCESS 1[0m in 1.54s]
+[0m19:30:53.784761 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:30:53.786326 [debug] [Thread-7 (]: Began running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:30:53.787264 [debug] [Thread-8 (]: Began running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:30:53.788782 [info ] [Thread-7 (]: 5 of 8 START sql view model RAW.int_asset_daily_metrics ........................ [RUN]
+[0m19:30:53.789698 [info ] [Thread-8 (]: 6 of 8 START sql view model RAW.int_customer_transactions ...................... [RUN]
+[0m19:30:53.790641 [debug] [Thread-7 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics'
+[0m19:30:53.791439 [debug] [Thread-8 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions'
+[0m19:30:53.792078 [debug] [Thread-7 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:30:53.792668 [debug] [Thread-8 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:30:53.801631 [debug] [Thread-7 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:30:53.810806 [debug] [Thread-8 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:30:53.812169 [debug] [Thread-7 (]: Began executing node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:30:53.957891 [debug] [Thread-8 (]: Began executing node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:30:53.957271 [debug] [Thread-7 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:30:53.965932 [debug] [Thread-8 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:30:53.968871 [debug] [Thread-7 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:30:53.970979 [debug] [Thread-8 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:30:53.971714 [debug] [Thread-7 (]: On model.dbt_investment_FAR_TRANS.int_asset_daily_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"} */
+create or replace   view FAR_TRANS_DB.RAW.int_asset_daily_metrics
+  
+   as (
+    with asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+),
+
+daily_prices as (
+    select * from FAR_TRANS_DB.RAW.stg_close_prices
+),
+
+daily_returns as (
+    select
+        isin,
+        price_date,
+        close_price,
+        lag(close_price) over (partition by isin order by price_date) as prev_close_price,
+        (close_price - lag(close_price) over (partition by isin order by price_date)) / 
+        lag(close_price) over (partition by isin order by price_date) as daily_return
+    from daily_prices
+)
+
+select
+    dr.*,
+    ai.asset_name,
+    ai.asset_category,
+    ai.asset_sub_category,
+    ai.sector,
+    ai.industry
+from daily_returns dr
+left join asset_info ai on dr.isin = ai.isin
+  );
+[0m19:30:53.972554 [debug] [Thread-8 (]: On model.dbt_investment_FAR_TRANS.int_customer_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_customer_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.int_customer_transactions
+  
+   as (
+    with customer_info as (
+    select * from FAR_TRANS_DB.RAW.stg_customer_information
+    where valid_to is null  -- Get current customer information
+),
+
+transactions as (
+    select * from FAR_TRANS_DB.RAW.stg_transactions
+),
+
+asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+)
+
+select
+    t.transaction_id,
+    t.customer_id,
+    t.isin,
+    t.transaction_type,
+    t.transaction_date,
+    t.total_value,
+    t.units,
+    t.channel,
+    t.market_id,
+    ci.customer_type,
+    ci.risk_level,
+    ci.investment_capacity,
+    ai.asset_name,
+    ai.asset_category,
+    ai.sector
+from transactions t
+left join customer_info ci on t.customer_id = ci.customer_id
+left join asset_info ai on t.isin = ai.isin
+  );
+[0m19:30:53.973247 [debug] [Thread-7 (]: Opening a new connection, currently in state init
+[0m19:30:53.973834 [debug] [Thread-8 (]: Opening a new connection, currently in state init
+[0m19:30:54.929836 [debug] [Thread-7 (]: SQL status: SUCCESS 1 in 0.956 seconds
+[0m19:30:54.933498 [info ] [Thread-7 (]: 5 of 8 OK created sql view model RAW.int_asset_daily_metrics ................... [[32mSUCCESS 1[0m in 1.14s]
+[0m19:30:54.934456 [debug] [Thread-7 (]: Finished running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:30:54.935598 [debug] [Thread-6 (]: Began running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:30:54.936498 [info ] [Thread-6 (]: 7 of 8 START sql view model RAW.mart_asset_performance ......................... [RUN]
+[0m19:30:54.937446 [debug] [Thread-6 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance'
+[0m19:30:54.938049 [debug] [Thread-6 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:30:54.948730 [debug] [Thread-6 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:30:54.949693 [debug] [Thread-6 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:30:54.950799 [debug] [Thread-8 (]: SQL status: SUCCESS 1 in 0.977 seconds
+[0m19:30:54.959019 [debug] [Thread-6 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:30:54.962467 [info ] [Thread-8 (]: 6 of 8 OK created sql view model RAW.int_customer_transactions ................. [[32mSUCCESS 1[0m in 1.17s]
+[0m19:30:54.963687 [debug] [Thread-8 (]: Finished running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:30:54.965607 [debug] [Thread-6 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:30:54.966833 [debug] [Thread-5 (]: Began running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:30:54.967652 [debug] [Thread-6 (]: On model.dbt_investment_FAR_TRANS.mart_asset_performance: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_asset_performance"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_asset_performance
+  
+   as (
+    with daily_metrics as (
+    select * from FAR_TRANS_DB.RAW.int_asset_daily_metrics
+),
+
+asset_stats as (
+    select
+        isin,
+        asset_name,
+        asset_category,
+        asset_sub_category,
+        sector,
+        industry,
+        min(price_date) as first_trading_date,
+        max(price_date) as last_trading_date,
+        min(close_price) as min_price,
+        max(close_price) as max_price,
+        avg(close_price) as avg_price,
+        avg(daily_return) as avg_daily_return,
+        stddev(daily_return) as daily_volatility,
+        count(*) as trading_days
+    from daily_metrics
+    where daily_return is not null
+    group by 1,2,3,4,5,6
+)
+
+select * from asset_stats
+  );
+[0m19:30:54.968543 [info ] [Thread-5 (]: 8 of 8 START sql view model RAW.mart_customer_portfolio ........................ [RUN]
+[0m19:30:54.969225 [debug] [Thread-6 (]: Opening a new connection, currently in state init
+[0m19:30:54.969984 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_transactions, now model.dbt_investment_FAR_TRANS.mart_customer_portfolio)
+[0m19:30:54.970868 [debug] [Thread-5 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:30:54.979293 [debug] [Thread-5 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:30:54.980196 [debug] [Thread-5 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:30:54.989651 [debug] [Thread-5 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:30:54.992151 [debug] [Thread-5 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:30:54.992918 [debug] [Thread-5 (]: On model.dbt_investment_FAR_TRANS.mart_customer_portfolio: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_customer_portfolio
+  
+   as (
+    with customer_transactions as (
+    select * from FAR_TRANS_DB.RAW.int_customer_transactions
+),
+
+customer_portfolio as (
+    select
+        customer_id,
+        customer_type,
+        risk_level,
+        investment_capacity,
+        count(distinct transaction_id) as total_transactions,
+        count(distinct isin) as unique_assets,
+        sum(case when transaction_type = 'Buy' then total_value else 0 end) as total_purchases,
+        sum(case when transaction_type = 'Sell' then total_value else 0 end) as total_sales,
+        sum(case when transaction_type = 'Buy' then total_value else -total_value end) as net_investment,
+        count(distinct asset_category) as asset_categories_traded,
+        count(distinct sector) as sectors_invested,
+        min(transaction_date) as first_transaction_date,
+        max(transaction_date) as last_transaction_date
+    from customer_transactions
+    group by 1,2,3,4
+)
+
+select * from customer_portfolio
+  );
+[0m19:30:54.993573 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m19:30:56.058185 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.064 seconds
+[0m19:30:56.061897 [info ] [Thread-5 (]: 8 of 8 OK created sql view model RAW.mart_customer_portfolio ................... [[32mSUCCESS 1[0m in 1.09s]
+[0m19:30:56.062846 [debug] [Thread-5 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:30:56.130908 [debug] [Thread-6 (]: SQL status: SUCCESS 1 in 1.161 seconds
+[0m19:30:56.135020 [info ] [Thread-6 (]: 7 of 8 OK created sql view model RAW.mart_asset_performance .................... [[32mSUCCESS 1[0m in 1.20s]
+[0m19:30:56.135983 [debug] [Thread-6 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:30:56.140788 [debug] [Dummy-1   ]: Connection 'master' was properly closed.
+[0m19:30:56.141466 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_asset_information' was properly closed.
+[0m19:30:56.141972 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_close_prices' was properly closed.
+[0m19:30:56.142449 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_customer_information' was properly closed.
+[0m19:30:56.142913 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_customer_portfolio' was properly closed.
+[0m19:30:56.143352 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics' was properly closed.
+[0m19:30:56.143787 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions' was properly closed.
+[0m19:30:56.144262 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance' was properly closed.
+[0m19:30:56.144906 [info ] [Dummy-1   ]: 
+[0m19:30:56.145529 [info ] [Dummy-1   ]: Finished running 8 view models in 0 hours 0 minutes and 6.61 seconds (6.61s).
+[0m19:30:56.147799 [debug] [Dummy-1   ]: Command end result
+[0m19:30:56.217750 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m19:30:56.220788 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m19:30:56.229484 [debug] [Dummy-1   ]: Wrote artifact RunExecutionResult to /tmp/dbt/target/run_results.json
+[0m19:30:56.230071 [info ] [Dummy-1   ]: 
+[0m19:30:56.230745 [info ] [Dummy-1   ]: [32mCompleted successfully[0m
+[0m19:30:56.231257 [info ] [Dummy-1   ]: 
+[0m19:30:56.231792 [info ] [Dummy-1   ]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 TOTAL=8
+[0m19:30:56.233661 [debug] [Dummy-1   ]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 8.806277, "process_in_blocks": "0", "process_kernel_time": 1.58, "process_mem_max_rss": "480736", "process_out_blocks": "0", "process_user_time": 6.46}
+[0m19:30:56.234367 [debug] [Dummy-1   ]: Command `cli run` succeeded at 19:30:56.234089 after 8.81 seconds
+[0m19:30:56.234931 [debug] [Dummy-1   ]: Flushing usage events
+
+
+============================== 19:52:59.202302 | e68d14e3-eaef-4be0-b15a-6bfe90975557 ==============================
+[0m19:52:59.202302 [info ] [Dummy-1   ]: Running with dbt=1.9.4
+[0m19:52:59.203522 [debug] [Dummy-1   ]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/tmp/dbt/', 'version_check': 'True', 'debug': 'False', 'log_path': '/tmp/dbt/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt ', 'static_parser': 'True', 'target_path': '/tmp/dbt/target/', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'False'}
+[0m19:52:59.604952 [info ] [Dummy-1   ]: Registered adapter: snowflake=1.9.2
+[0m19:53:00.425125 [debug] [Dummy-1   ]: checksum: 6d8301ed5f8f0471e249cbcc8805b42bc5f78a9b258cb4e5c4b012c6ace116b4, vars: {}, profile: , target: prod, version: 1.9.4
+[0m19:53:00.955362 [debug] [Dummy-1   ]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m19:53:00.956313 [debug] [Dummy-1   ]: Partial parsing enabled, no changes found, skipping parsing
+[0m19:53:00.966921 [warn ] [Dummy-1   ]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.far_trans.marts
+- models.far_trans.staging
+- models.far_trans.intermediate
+[0m19:53:01.236991 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m19:53:01.240840 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m19:53:01.303560 [info ] [Dummy-1   ]: Found 8 models, 43 data tests, 4 sources, 917 macros
+[0m19:53:01.307889 [info ] [Dummy-1   ]: 
+[0m19:53:01.308735 [info ] [Dummy-1   ]: Concurrency: 8 threads (target='prod')
+[0m19:53:01.309449 [info ] [Dummy-1   ]: 
+[0m19:53:01.310562 [debug] [Dummy-1   ]: Acquiring new snowflake connection 'master'
+[0m19:53:01.319358 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_FAR_TRANS_DB'
+[0m19:53:01.480103 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB"
+[0m19:53:01.480947 [debug] [ThreadPool]: On list_FAR_TRANS_DB: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB"} */
+show terse schemas in database FAR_TRANS_DB
+    limit 10000
+[0m19:53:01.481631 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:53:02.757435 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 1.276 seconds
+[0m19:53:02.763057 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_FAR_TRANS_DB_RAW'
+[0m19:53:02.794136 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:53:02.794956 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session set quoted_identifiers_ignore_case = false;
+[0m19:53:02.795582 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:53:03.799113 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 1.003 seconds
+[0m19:53:03.805568 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:53:03.806432 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+show objects in FAR_TRANS_DB.RAW
+    limit 10000
+    
+;
+[0m19:53:03.997767 [debug] [ThreadPool]: SQL status: SUCCESS 15 in 0.190 seconds
+[0m19:53:04.007295 [debug] [ThreadPool]: Using snowflake connection "list_FAR_TRANS_DB_RAW"
+[0m19:53:04.008338 [debug] [ThreadPool]: On list_FAR_TRANS_DB_RAW: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "connection_name": "list_FAR_TRANS_DB_RAW"} */
+alter session unset quoted_identifiers_ignore_case;
+[0m19:53:04.166064 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.157 seconds
+[0m19:53:04.188074 [debug] [Thread-2 (]: Began running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:53:04.189215 [debug] [Thread-3 (]: Began running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:53:04.190282 [debug] [Thread-4 (]: Began running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:53:04.191272 [debug] [Thread-5 (]: Began running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:53:04.192413 [info ] [Thread-2 (]: 1 of 8 START sql view model RAW.stg_asset_information .......................... [RUN]
+[0m19:53:04.193418 [info ] [Thread-3 (]: 2 of 8 START sql view model RAW.stg_close_prices ............................... [RUN]
+[0m19:53:04.194493 [info ] [Thread-4 (]: 3 of 8 START sql view model RAW.stg_customer_information ....................... [RUN]
+[0m19:53:04.195463 [info ] [Thread-5 (]: 4 of 8 START sql view model RAW.stg_transactions ............................... [RUN]
+[0m19:53:04.196480 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB_RAW, now model.dbt_investment_FAR_TRANS.stg_asset_information)
+[0m19:53:04.197398 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly list_FAR_TRANS_DB, now model.dbt_investment_FAR_TRANS.stg_close_prices)
+[0m19:53:04.198425 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_customer_information'
+[0m19:53:04.199375 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.stg_transactions'
+[0m19:53:04.200208 [debug] [Thread-2 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:53:04.200900 [debug] [Thread-3 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:53:04.201573 [debug] [Thread-4 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:53:04.202283 [debug] [Thread-5 (]: Began compiling node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:53:04.227264 [debug] [Thread-2 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:53:04.248114 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:53:04.268971 [debug] [Thread-4 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:53:04.424966 [debug] [Thread-5 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:53:04.426555 [debug] [Thread-2 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:53:04.427730 [debug] [Thread-3 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:53:04.428832 [debug] [Thread-4 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:53:04.459293 [debug] [Thread-5 (]: Began executing node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:53:04.553254 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:53:04.558481 [debug] [Thread-2 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:53:04.561200 [debug] [Thread-4 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:53:04.581261 [debug] [Thread-5 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:53:04.583436 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_close_prices"
+[0m19:53:04.585678 [debug] [Thread-2 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_asset_information"
+[0m19:53:04.587837 [debug] [Thread-4 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_customer_information"
+[0m19:53:04.588884 [debug] [Thread-3 (]: On model.dbt_investment_FAR_TRANS.stg_close_prices: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_close_prices"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_close_prices
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.close_prices
+),
+
+renamed as (
+    select
+        isin,
+        timestamp::timestamp as price_date,
+        closeprice::decimal(20,4) as close_price
+    from source
+)
+
+select * from renamed
+  );
+[0m19:53:04.590651 [debug] [Thread-5 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.stg_transactions"
+[0m19:53:04.591542 [debug] [Thread-2 (]: On model.dbt_investment_FAR_TRANS.stg_asset_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_asset_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_asset_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.asset_information
+),
+
+renamed as (
+    select
+        isin,
+        assetname as asset_name,
+        assetshortname as asset_short_name,
+        assetcategory as asset_category,
+        assetsubcategory as asset_sub_category,
+        marketid as market_id,
+        sector,
+        industry,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by isin order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m19:53:04.592540 [debug] [Thread-4 (]: On model.dbt_investment_FAR_TRANS.stg_customer_information: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_customer_information"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_customer_information
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.customer_information
+),
+
+renamed as (
+    select
+        customerid as customer_id,
+        customertype as customer_type,
+        risklevel as risk_level,
+        investmentcapacity as investment_capacity,
+        lastquestionnairedate::date as last_questionnaire_date,
+        timestamp::timestamp as valid_from,
+        lead(timestamp::timestamp) over (partition by customerid order by timestamp) as valid_to
+    from source
+)
+
+select * from renamed
+  );
+[0m19:53:04.593375 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m19:53:04.594198 [debug] [Thread-5 (]: On model.dbt_investment_FAR_TRANS.stg_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.stg_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.stg_transactions
+  
+   as (
+    with source as (
+    select * from FAR_TRANS_DB.raw.transactions
+),
+
+renamed as (
+    select
+        customerID as customer_id,
+        ISIN as isin,
+        transactionID as transaction_id,
+        transactionType as transaction_type,
+        timestamp::timestamp as transaction_date,
+        totalValue::decimal(20,4) as total_value,
+        units::decimal(20,4) as units,
+        channel,
+        marketID as market_id
+    from source
+)
+
+select * from renamed
+  );
+[0m19:53:04.594945 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m19:53:04.595666 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m19:53:04.596736 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m19:53:05.964463 [debug] [Thread-5 (]: SQL status: SUCCESS 1 in 1.368 seconds
+[0m19:53:05.984433 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.391 seconds
+[0m19:53:05.985910 [debug] [Thread-4 (]: SQL status: SUCCESS 1 in 1.390 seconds
+[0m19:53:06.002386 [debug] [Thread-2 (]: SQL status: SUCCESS 1 in 1.407 seconds
+[0m19:53:06.017853 [info ] [Thread-5 (]: 4 of 8 OK created sql view model RAW.stg_transactions .......................... [[32mSUCCESS 1[0m in 1.81s]
+[0m19:53:06.019001 [info ] [Thread-3 (]: 2 of 8 OK created sql view model RAW.stg_close_prices .......................... [[32mSUCCESS 1[0m in 1.81s]
+[0m19:53:06.020107 [info ] [Thread-4 (]: 3 of 8 OK created sql view model RAW.stg_customer_information .................. [[32mSUCCESS 1[0m in 1.82s]
+[0m19:53:06.021214 [info ] [Thread-2 (]: 1 of 8 OK created sql view model RAW.stg_asset_information ..................... [[32mSUCCESS 1[0m in 1.82s]
+[0m19:53:06.022398 [debug] [Thread-5 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_transactions
+[0m19:53:06.023437 [debug] [Thread-3 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_close_prices
+[0m19:53:06.025387 [debug] [Thread-4 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_customer_information
+[0m19:53:06.026632 [debug] [Thread-2 (]: Finished running node model.dbt_investment_FAR_TRANS.stg_asset_information
+[0m19:53:06.030331 [debug] [Thread-7 (]: Began running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:53:06.031493 [debug] [Thread-8 (]: Began running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:53:06.033099 [info ] [Thread-7 (]: 5 of 8 START sql view model RAW.int_asset_daily_metrics ........................ [RUN]
+[0m19:53:06.034258 [info ] [Thread-8 (]: 6 of 8 START sql view model RAW.int_customer_transactions ...................... [RUN]
+[0m19:53:06.035480 [debug] [Thread-7 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics'
+[0m19:53:06.036537 [debug] [Thread-8 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions'
+[0m19:53:06.037316 [debug] [Thread-7 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:53:06.038094 [debug] [Thread-8 (]: Began compiling node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:53:06.060348 [debug] [Thread-7 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:53:06.082253 [debug] [Thread-8 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:53:06.083658 [debug] [Thread-7 (]: Began executing node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:53:06.090560 [debug] [Thread-8 (]: Began executing node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:53:06.105882 [debug] [Thread-7 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:53:06.125827 [debug] [Thread-8 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:53:06.134829 [debug] [Thread-7 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"
+[0m19:53:06.136356 [debug] [Thread-7 (]: On model.dbt_investment_FAR_TRANS.int_asset_daily_metrics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_asset_daily_metrics"} */
+create or replace   view FAR_TRANS_DB.RAW.int_asset_daily_metrics
+  
+   as (
+    with asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+),
+
+daily_prices as (
+    select * from FAR_TRANS_DB.RAW.stg_close_prices
+),
+
+daily_returns as (
+    select
+        isin,
+        price_date,
+        close_price,
+        lag(close_price) over (partition by isin order by price_date) as prev_close_price,
+        (close_price - lag(close_price) over (partition by isin order by price_date)) / 
+        lag(close_price) over (partition by isin order by price_date) as daily_return
+    from daily_prices
+)
+
+select
+    dr.*,
+    ai.asset_name,
+    ai.asset_category,
+    ai.asset_sub_category,
+    ai.sector,
+    ai.industry
+from daily_returns dr
+left join asset_info ai on dr.isin = ai.isin
+  );
+[0m19:53:06.138845 [debug] [Thread-8 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.int_customer_transactions"
+[0m19:53:06.139700 [debug] [Thread-7 (]: Opening a new connection, currently in state init
+[0m19:53:06.140706 [debug] [Thread-8 (]: On model.dbt_investment_FAR_TRANS.int_customer_transactions: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.int_customer_transactions"} */
+create or replace   view FAR_TRANS_DB.RAW.int_customer_transactions
+  
+   as (
+    with customer_info as (
+    select * from FAR_TRANS_DB.RAW.stg_customer_information
+    where valid_to is null  -- Get current customer information
+),
+
+transactions as (
+    select * from FAR_TRANS_DB.RAW.stg_transactions
+),
+
+asset_info as (
+    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    where valid_to is null  -- Get current asset information
+)
+
+select
+    t.transaction_id,
+    t.customer_id,
+    t.isin,
+    t.transaction_type,
+    t.transaction_date,
+    t.total_value,
+    t.units,
+    t.channel,
+    t.market_id,
+    ci.customer_type,
+    ci.risk_level,
+    ci.investment_capacity,
+    ai.asset_name,
+    ai.asset_category,
+    ai.sector
+from transactions t
+left join customer_info ci on t.customer_id = ci.customer_id
+left join asset_info ai on t.isin = ai.isin
+  );
+[0m19:53:06.141838 [debug] [Thread-8 (]: Opening a new connection, currently in state init
+[0m19:53:07.302916 [debug] [Thread-7 (]: SQL status: SUCCESS 1 in 1.163 seconds
+[0m19:53:07.307012 [info ] [Thread-7 (]: 5 of 8 OK created sql view model RAW.int_asset_daily_metrics ................... [[32mSUCCESS 1[0m in 1.27s]
+[0m19:53:07.308145 [debug] [Thread-7 (]: Finished running node model.dbt_investment_FAR_TRANS.int_asset_daily_metrics
+[0m19:53:07.310085 [debug] [Thread-6 (]: Began running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:53:07.311234 [info ] [Thread-6 (]: 7 of 8 START sql view model RAW.mart_asset_performance ......................... [RUN]
+[0m19:53:07.312440 [debug] [Thread-6 (]: Acquiring new snowflake connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance'
+[0m19:53:07.313234 [debug] [Thread-6 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:53:07.333386 [debug] [Thread-6 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:53:07.334501 [debug] [Thread-6 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:53:07.352634 [debug] [Thread-8 (]: SQL status: SUCCESS 1 in 1.211 seconds
+[0m19:53:07.355099 [debug] [Thread-6 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:53:07.359130 [info ] [Thread-8 (]: 6 of 8 OK created sql view model RAW.int_customer_transactions ................. [[32mSUCCESS 1[0m in 1.32s]
+[0m19:53:07.360769 [debug] [Thread-8 (]: Finished running node model.dbt_investment_FAR_TRANS.int_customer_transactions
+[0m19:53:07.362975 [debug] [Thread-6 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_asset_performance"
+[0m19:53:07.365082 [debug] [Thread-3 (]: Began running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:53:07.366045 [debug] [Thread-6 (]: On model.dbt_investment_FAR_TRANS.mart_asset_performance: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_asset_performance"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_asset_performance
+  
+   as (
+    with daily_metrics as (
+    select * from FAR_TRANS_DB.RAW.int_asset_daily_metrics
+),
+
+asset_stats as (
+    select
+        isin,
+        asset_name,
+        asset_category,
+        asset_sub_category,
+        sector,
+        industry,
+        min(price_date) as first_trading_date,
+        max(price_date) as last_trading_date,
+        min(close_price) as min_price,
+        max(close_price) as max_price,
+        avg(close_price) as avg_price,
+        avg(daily_return) as avg_daily_return,
+        stddev(daily_return) as daily_volatility,
+        count(*) as trading_days
+    from daily_metrics
+    where daily_return is not null
+    group by 1,2,3,4,5,6
+)
+
+select * from asset_stats
+  );
+[0m19:53:07.367182 [info ] [Thread-3 (]: 8 of 8 START sql view model RAW.mart_customer_portfolio ........................ [RUN]
+[0m19:53:07.368056 [debug] [Thread-6 (]: Opening a new connection, currently in state init
+[0m19:53:07.368968 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.dbt_investment_FAR_TRANS.stg_close_prices, now model.dbt_investment_FAR_TRANS.mart_customer_portfolio)
+[0m19:53:07.369888 [debug] [Thread-3 (]: Began compiling node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:53:07.389802 [debug] [Thread-3 (]: Writing injected SQL for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:53:07.390915 [debug] [Thread-3 (]: Began executing node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:53:07.411015 [debug] [Thread-3 (]: Writing runtime sql for node "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:53:07.414974 [debug] [Thread-3 (]: Using snowflake connection "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"
+[0m19:53:07.415982 [debug] [Thread-3 (]: On model.dbt_investment_FAR_TRANS.mart_customer_portfolio: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "dbt_investment_FAR_TRANS", "target_name": "prod", "node_id": "model.dbt_investment_FAR_TRANS.mart_customer_portfolio"} */
+create or replace   view FAR_TRANS_DB.RAW.mart_customer_portfolio
+  
+   as (
+    with customer_transactions as (
+    select * from FAR_TRANS_DB.RAW.int_customer_transactions
+),
+
+customer_portfolio as (
+    select
+        customer_id,
+        customer_type,
+        risk_level,
+        investment_capacity,
+        count(distinct transaction_id) as total_transactions,
+        count(distinct isin) as unique_assets,
+        sum(case when transaction_type = 'Buy' then total_value else 0 end) as total_purchases,
+        sum(case when transaction_type = 'Sell' then total_value else 0 end) as total_sales,
+        sum(case when transaction_type = 'Buy' then total_value else -total_value end) as net_investment,
+        count(distinct asset_category) as asset_categories_traded,
+        count(distinct sector) as sectors_invested,
+        min(transaction_date) as first_transaction_date,
+        max(transaction_date) as last_transaction_date
+    from customer_transactions
+    group by 1,2,3,4
+)
+
+select * from customer_portfolio
+  );
+[0m19:53:07.416827 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m19:53:08.514916 [debug] [Thread-6 (]: SQL status: SUCCESS 1 in 1.147 seconds
+[0m19:53:08.519028 [info ] [Thread-6 (]: 7 of 8 OK created sql view model RAW.mart_asset_performance .................... [[32mSUCCESS 1[0m in 1.21s]
+[0m19:53:08.520171 [debug] [Thread-6 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_asset_performance
+[0m19:53:08.662778 [debug] [Thread-3 (]: SQL status: SUCCESS 1 in 1.246 seconds
+[0m19:53:08.666826 [info ] [Thread-3 (]: 8 of 8 OK created sql view model RAW.mart_customer_portfolio ................... [[32mSUCCESS 1[0m in 1.30s]
+[0m19:53:08.667998 [debug] [Thread-3 (]: Finished running node model.dbt_investment_FAR_TRANS.mart_customer_portfolio
+[0m19:53:08.673898 [debug] [Dummy-1   ]: Connection 'master' was properly closed.
+[0m19:53:08.674846 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_customer_portfolio' was properly closed.
+[0m19:53:08.675503 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_asset_information' was properly closed.
+[0m19:53:08.676148 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_customer_information' was properly closed.
+[0m19:53:08.676756 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.stg_transactions' was properly closed.
+[0m19:53:08.677335 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_asset_daily_metrics' was properly closed.
+[0m19:53:08.677902 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.int_customer_transactions' was properly closed.
+[0m19:53:08.678469 [debug] [Dummy-1   ]: Connection 'model.dbt_investment_FAR_TRANS.mart_asset_performance' was properly closed.
+[0m19:53:08.679235 [info ] [Dummy-1   ]: 
+[0m19:53:08.679917 [info ] [Dummy-1   ]: Finished running 8 view models in 0 hours 0 minutes and 7.37 seconds (7.37s).
+[0m19:53:08.682337 [debug] [Dummy-1   ]: Command end result
+[0m19:53:08.929817 [debug] [Dummy-1   ]: Wrote artifact WritableManifest to /tmp/dbt/target/manifest.json
+[0m19:53:08.933217 [debug] [Dummy-1   ]: Wrote artifact SemanticManifest to /tmp/dbt/target/semantic_manifest.json
+[0m19:53:08.942311 [debug] [Dummy-1   ]: Wrote artifact RunExecutionResult to /tmp/dbt/target/run_results.json
+[0m19:53:08.943017 [info ] [Dummy-1   ]: 
+[0m19:53:08.943832 [info ] [Dummy-1   ]: [32mCompleted successfully[0m
+[0m19:53:08.944481 [info ] [Dummy-1   ]: 
+[0m19:53:08.945130 [info ] [Dummy-1   ]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 TOTAL=8
+[0m19:53:08.947905 [debug] [Dummy-1   ]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 9.850132, "process_in_blocks": "0", "process_kernel_time": 1.73, "process_mem_max_rss": "488936", "process_out_blocks": "0", "process_user_time": 7.69}
+[0m19:53:08.948800 [debug] [Dummy-1   ]: Command `cli run` succeeded at 19:53:08.948396 after 9.85 seconds
+[0m19:53:08.949496 [debug] [Dummy-1   ]: Flushing usage events
