@@ -18,7 +18,7 @@ clean-targets:
   - "logs"
 
 models:
-  far_trans:
+  dbt_investment_FAR_TRANS:
     staging:
       +materialized: view
       +schema: staging
