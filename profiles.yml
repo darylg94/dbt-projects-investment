@@ -6,7 +6,7 @@ dbt_investment_FAR_TRANS:
       account: 'not needed' # Replace with your Snowflake account identifier
       
       # User authentication
-      user: DGOH
+      user: 'not needed'
       
       # Database configuration
       role: FAR_TRANS_DBT_ROLE
@@ -24,7 +24,7 @@ dbt_investment_FAR_TRANS:
       account: 'not needed' # Replace with your Snowflake account identifier
       
       # User authentication
-      user: DGOH
+      user: 'not needed'
       password: 'not needed' # Replace with actual password
       
       # Database configuration
