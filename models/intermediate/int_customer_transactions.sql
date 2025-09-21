@@ -1,3 +1,5 @@
+{{ config(materialized='table', schema='intermediate') }}
+
 with customer_info as (
     select * from {{ ref('stg_customer_information') }}
     where valid_to is null  -- Get current customer information

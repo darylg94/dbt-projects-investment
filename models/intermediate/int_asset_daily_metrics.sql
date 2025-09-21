@@ -1,3 +1,5 @@
+{{ config(materialized='table', schema='intermediate') }}
+
 with asset_info as (
     select * from {{ ref('stg_asset_information') }}
     where valid_to is null  -- Get current asset information

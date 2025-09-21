@@ -1,3 +1,5 @@
+{{ config(materialized='table', schema='marts') }}
+
 with customer_transactions as (
     select * from {{ ref('int_customer_transactions') }}
 ),

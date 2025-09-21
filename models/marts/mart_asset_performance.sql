@@ -1,3 +1,5 @@
+{{ config(materialized='table', schema='marts') }}
+
 with daily_metrics as (
     select * from {{ ref('int_asset_daily_metrics') }}
 ),

@@ -1,3 +1,5 @@
+{{ config(materialized='view', schema='staging') }}
+
 with source as (
     select * from {{ source('raw', 'transactions') }}
 ),
