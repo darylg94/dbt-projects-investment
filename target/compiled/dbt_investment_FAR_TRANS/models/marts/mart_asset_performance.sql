@@ -1,5 +1,7 @@
+
+
 with daily_metrics as (
-    select * from FAR_TRANS_DB.RAW.int_asset_daily_metrics
+    select * from FAR_TRANS_DB.MARTS.int_asset_daily_metrics
 ),
 
 asset_stats as (

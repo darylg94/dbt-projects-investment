@@ -1,9 +1,13 @@
 
-  create or replace   view FAR_TRANS_DB.RAW.mart_customer_portfolio
   
-   as (
-    with customer_transactions as (
-    select * from FAR_TRANS_DB.RAW.int_customer_transactions
+    
+
+        create or replace transient table FAR_TRANS_DB.marts.mart_customer_portfolio
+         as
+        (
+
+with customer_transactions as (
+    select * from FAR_TRANS_DB.MARTS.int_customer_transactions
 ),
 
 customer_portfolio as (
@@ -26,5 +30,6 @@ customer_portfolio as (
 )
 
 select * from customer_portfolio
-  );
-
+        );
+      
+  

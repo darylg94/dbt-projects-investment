@@ -7,7 +7,7 @@ with daily_changes as (
         lag(close_price) over (partition by isin order by price_date) as prev_close,
         abs((close_price - lag(close_price) over (partition by isin order by price_date)) / 
             lag(close_price) over (partition by isin order by price_date)) as price_change_pct
-    from FAR_TRANS_DB.RAW.stg_close_prices
+    from FAR_TRANS_DB.staging.stg_close_prices
 )
 
 select *

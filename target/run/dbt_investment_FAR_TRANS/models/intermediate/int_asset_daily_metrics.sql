@@ -1,14 +1,18 @@
 
-  create or replace   view FAR_TRANS_DB.RAW.int_asset_daily_metrics
   
-   as (
-    with asset_info as (
-    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    
+
+        create or replace transient table FAR_TRANS_DB.MARTS.int_asset_daily_metrics
+         as
+        (
+
+with asset_info as (
+    select * from FAR_TRANS_DB.staging.stg_asset_information
     where valid_to is null  -- Get current asset information
 ),
 
 daily_prices as (
-    select * from FAR_TRANS_DB.RAW.stg_close_prices
+    select * from FAR_TRANS_DB.staging.stg_close_prices
 ),
 
 daily_returns as (
@@ -31,5 +35,6 @@ select
     ai.industry
 from daily_returns dr
 left join asset_info ai on dr.isin = ai.isin
-  );
-
+        );
+      
+  

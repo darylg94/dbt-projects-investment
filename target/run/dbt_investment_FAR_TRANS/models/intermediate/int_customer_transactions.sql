@@ -1,18 +1,22 @@
 
-  create or replace   view FAR_TRANS_DB.RAW.int_customer_transactions
   
-   as (
-    with customer_info as (
-    select * from FAR_TRANS_DB.RAW.stg_customer_information
+    
+
+        create or replace transient table FAR_TRANS_DB.MARTS.int_customer_transactions
+         as
+        (
+
+with customer_info as (
+    select * from FAR_TRANS_DB.staging.stg_customer_information
     where valid_to is null  -- Get current customer information
 ),
 
 transactions as (
-    select * from FAR_TRANS_DB.RAW.stg_transactions
+    select * from FAR_TRANS_DB.staging.stg_transactions
 ),
 
 asset_info as (
-    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    select * from FAR_TRANS_DB.staging.stg_asset_information
     where valid_to is null  -- Get current asset information
 )
 
@@ -35,5 +39,6 @@ select
 from transactions t
 left join customer_info ci on t.customer_id = ci.customer_id
 left join asset_info ai on t.isin = ai.isin
-  );
-
+        );
+      
+  

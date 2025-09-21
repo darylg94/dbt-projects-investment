@@ -1,4 +1,4 @@
-{{ config(materialized='table', schema='intermediate') }}
+{{ config(materialized='table', schema='MARTS') }}
 
 with asset_info as (
     select * from {{ ref('stg_asset_information') }}

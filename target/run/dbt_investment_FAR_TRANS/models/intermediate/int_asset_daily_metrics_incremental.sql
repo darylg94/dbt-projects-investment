@@ -1,25 +1,20 @@
-{{
-  config(
-    materialized='incremental',
-    unique_key=['isin', 'price_date'],
-    on_schema_change='sync_all_columns',
-    schema='MARTS',
-    incremental_strategy='merge'
-  )
-}}
+
+  
+    
+
+        create or replace transient table FAR_TRANS_DB.MARTS.int_asset_daily_metrics_incremental
+         as
+        (
 
 with asset_info as (
-    select * from {{ ref('stg_asset_information') }}
+    select * from FAR_TRANS_DB.staging.stg_asset_information
     where valid_to is null  -- Get current asset information
 ),
 
 daily_prices as (
-    select * from {{ ref('stg_close_prices') }}
+    select * from FAR_TRANS_DB.staging.stg_close_prices
     
-    {% if is_incremental() %}
-        -- Only process recent price data
-        where price_date > (select max(price_date) from {{ this }})
-    {% endif %}
+    
 ),
 
 daily_returns as (
@@ -56,3 +51,6 @@ final as (
 )
 
 select * from final
+        );
+      
+  

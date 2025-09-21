@@ -1,10 +1,12 @@
+
+
 with asset_info as (
-    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    select * from FAR_TRANS_DB.staging.stg_asset_information
     where valid_to is null  -- Get current asset information
 ),
 
 daily_prices as (
-    select * from FAR_TRANS_DB.RAW.stg_close_prices
+    select * from FAR_TRANS_DB.staging.stg_close_prices
 ),
 
 daily_returns as (

@@ -1,8 +1,10 @@
 
-  create or replace   view FAR_TRANS_DB.RAW.stg_transactions
+  create or replace   view FAR_TRANS_DB.staging.stg_transactions
   
    as (
-    with source as (
+    
+
+with source as (
     select * from FAR_TRANS_DB.raw.transactions
 ),
 

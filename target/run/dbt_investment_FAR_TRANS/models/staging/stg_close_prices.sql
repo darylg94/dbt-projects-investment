@@ -1,8 +1,10 @@
 
-  create or replace   view FAR_TRANS_DB.RAW.stg_close_prices
+  create or replace   view FAR_TRANS_DB.staging.stg_close_prices
   
    as (
-    with source as (
+    
+
+with source as (
     select * from FAR_TRANS_DB.raw.close_prices
 ),
 

@@ -9,7 +9,7 @@ with risk_validation as (
             when risk_level = 'Income' and investment_capacity in ('CAP_300K_1M', 'CAP_GT1M') then 'Invalid'
             else 'Valid'
         end as consistency_check
-    from FAR_TRANS_DB.RAW.stg_customer_information
+    from FAR_TRANS_DB.staging.stg_customer_information
     where valid_to is null  -- Check only current records
 )
 

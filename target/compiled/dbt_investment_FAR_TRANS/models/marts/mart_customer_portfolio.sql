@@ -1,5 +1,7 @@
+
+
 with customer_transactions as (
-    select * from FAR_TRANS_DB.RAW.int_customer_transactions
+    select * from FAR_TRANS_DB.MARTS.int_customer_transactions
 ),
 
 customer_portfolio as (

@@ -1,8 +1,10 @@
 
-  create or replace   view FAR_TRANS_DB.RAW.stg_asset_information
+  create or replace   view FAR_TRANS_DB.staging.stg_asset_information
   
    as (
-    with source as (
+    
+
+with source as (
     select * from FAR_TRANS_DB.raw.asset_information
 ),
 

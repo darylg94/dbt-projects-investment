@@ -1,3 +1,5 @@
+
+
 with source as (
     select * from FAR_TRANS_DB.raw.asset_information
 ),

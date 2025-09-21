@@ -5,7 +5,7 @@
 
 
 select isin
-from FAR_TRANS_DB.RAW.stg_asset_information
+from FAR_TRANS_DB.staging.stg_asset_information
 where isin is null
 
 

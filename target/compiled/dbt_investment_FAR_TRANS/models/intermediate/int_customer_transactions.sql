@@ -1,14 +1,16 @@
+
+
 with customer_info as (
-    select * from FAR_TRANS_DB.RAW.stg_customer_information
+    select * from FAR_TRANS_DB.staging.stg_customer_information
     where valid_to is null  -- Get current customer information
 ),
 
 transactions as (
-    select * from FAR_TRANS_DB.RAW.stg_transactions
+    select * from FAR_TRANS_DB.staging.stg_transactions
 ),
 
 asset_info as (
-    select * from FAR_TRANS_DB.RAW.stg_asset_information
+    select * from FAR_TRANS_DB.staging.stg_asset_information
     where valid_to is null  -- Get current asset information
 )
 
