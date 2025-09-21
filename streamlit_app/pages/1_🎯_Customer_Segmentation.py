@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
+import altair as alt
 
 st.set_page_config(page_title="Customer Segmentation", page_icon="🎯", layout="wide")
 
@@ -75,51 +74,56 @@ ORDER BY total_aum DESC
 segmentation_data = run_query(segmentation_query)
 
 if not segmentation_data.empty:
-    # Create 2x2 subplot layout
     col1, col2 = st.columns(2)
     
     with col1:
-        # Heatmap for AUM
-        pivot_aum = segmentation_data.pivot(
-            index='CUSTOMER_TYPE', 
-            columns='RISK_LEVEL', 
-            values='TOTAL_AUM'
-        ).fillna(0)
-        
-        fig_heatmap = px.imshow(
-            pivot_aum,
-            title="Total AUM by Customer Type & Risk Level",
-            labels=dict(x="Risk Level", y="Customer Type", color="Total AUM"),
-            aspect="auto",
-            color_continuous_scale="Blues"
+        # Customer count heatmap
+        fig_heatmap = alt.Chart(segmentation_data).mark_rect().encode(
+            x=alt.X('RISK_LEVEL:N', title='Risk Level'),
+            y=alt.Y('CUSTOMER_TYPE:N', title='Customer Type'),
+            color=alt.Color('TOTAL_AUM:Q', scale=alt.Scale(scheme='blues'), title='Total AUM'),
+            tooltip=['CUSTOMER_TYPE', 'RISK_LEVEL', 'CUSTOMER_COUNT', 'TOTAL_AUM']
+        ).properties(
+            title="AUM Heatmap by Customer Type & Risk Level",
+            width=300,
+            height=200
         )
-        st.plotly_chart(fig_heatmap, use_container_width=True)
+        st.altair_chart(fig_heatmap, use_container_width=True)
     
     with col2:
-        # Bubble chart for customer count vs portfolio size
-        fig_bubble = px.scatter(
-            segmentation_data,
-            x='AVG_PORTFOLIO_SIZE',
-            y='CUSTOMER_COUNT',
-            size='TOTAL_AUM',
-            color='RISK_LEVEL',
-            hover_data=['CUSTOMER_TYPE', 'AVG_TRANSACTION_FREQUENCY'],
-            title="Customer Count vs Average Portfolio Size"
+        # Bubble chart for segmentation
+        fig_bubble = alt.Chart(segmentation_data).mark_circle().encode(
+            x=alt.X('AVG_PORTFOLIO_SIZE:Q', title='Average Portfolio Size'),
+            y=alt.Y('CUSTOMER_COUNT:Q', title='Customer Count'),
+            size=alt.Size('TOTAL_AUM:Q', title='Total AUM'),
+            color=alt.Color('RISK_LEVEL:N', title='Risk Level'),
+            shape=alt.Shape('CUSTOMER_TYPE:N', title='Customer Type'),
+            tooltip=['CUSTOMER_TYPE', 'RISK_LEVEL', 'CUSTOMER_COUNT', 'AVG_PORTFOLIO_SIZE', 'TOTAL_AUM']
+        ).properties(
+            title="Customer Segmentation Bubble Chart",
+            width=400,
+            height=300
         )
-        st.plotly_chart(fig_bubble, use_container_width=True)
+        st.altair_chart(fig_bubble, use_container_width=True)
 
 # Detailed segmentation table
 st.header("📋 Detailed Segmentation Data")
 if not segmentation_data.empty:
-    st.dataframe(
-        segmentation_data.style.format({
-            'AVG_PORTFOLIO_SIZE': '${:,.0f}',
-            'TOTAL_AUM': '${:,.0f}',
-            'AVG_TRANSACTION_FREQUENCY': '{:.1f}',
-            'AVG_DIVERSIFICATION': '{:.1f}'
-        }),
-        use_container_width=True
+    # Format currency columns
+    formatted_data = segmentation_data.copy()
+    formatted_data['AVG_PORTFOLIO_SIZE'] = formatted_data['AVG_PORTFOLIO_SIZE'].apply(
+        lambda x: f"${x:,.0f}" if pd.notna(x) else "N/A"
     )
+    formatted_data['TOTAL_AUM'] = formatted_data['TOTAL_AUM'].apply(
+        lambda x: f"${x:,.0f}" if pd.notna(x) else "N/A"
+    )
+    formatted_data['AVG_TRANSACTION_FREQUENCY'] = formatted_data['AVG_TRANSACTION_FREQUENCY'].apply(
+        lambda x: f"{x:.1f}" if pd.notna(x) else "N/A"
+    )
+    formatted_data['AVG_DIVERSIFICATION'] = formatted_data['AVG_DIVERSIFICATION'].apply(
+        lambda x: f"{x:.1f}" if pd.notna(x) else "N/A"
+    )
+    st.dataframe(formatted_data, use_container_width=True)
 
 # Customer Lifecycle Analysis
 st.header("📈 Customer Lifecycle Analysis")
@@ -150,15 +154,19 @@ ORDER BY avg_portfolio_value DESC
 lifecycle_data = run_query(lifecycle_query)
 
 if not lifecycle_data.empty:
-    fig_treemap = px.treemap(
-        lifecycle_data,
-        path=['VALUE_SEGMENT', 'ACTIVITY_LEVEL'],
-        values='CUSTOMER_COUNT',
-        color='AVG_PORTFOLIO_VALUE',
-        title="Customer Distribution by Value Segment & Activity Level",
-        color_continuous_scale="RdYlBu"
+    # Altair grouped bar chart
+    fig_grouped = alt.Chart(lifecycle_data).mark_bar().encode(
+        x=alt.X('VALUE_SEGMENT:N', title='Value Segment'),
+        y=alt.Y('CUSTOMER_COUNT:Q', title='Customer Count'),
+        color=alt.Color('ACTIVITY_LEVEL:N', title='Activity Level'),
+        column=alt.Column('ACTIVITY_LEVEL:N', title='Activity Level'),
+        tooltip=['VALUE_SEGMENT', 'ACTIVITY_LEVEL', 'CUSTOMER_COUNT', 'AVG_PORTFOLIO_VALUE']
+    ).properties(
+        title="Customer Distribution by Value & Activity",
+        width=150,
+        height=200
     )
-    st.plotly_chart(fig_treemap, use_container_width=True)
+    st.altair_chart(fig_grouped, use_container_width=True)
 
 # Risk Profile Analysis
 st.header("⚖️ Risk Profile Analysis")
@@ -184,24 +192,62 @@ if not risk_profile_data.empty:
     
     with col1:
         # Risk vs Portfolio Size
-        fig_risk_portfolio = px.bar(
-            risk_profile_data,
-            x='RISK_LEVEL',
-            y='AVG_PORTFOLIO',
-            color='CUSTOMER_TYPE',
-            title="Average Portfolio Size by Risk Level & Customer Type",
-            barmode='group'
+        fig_risk_portfolio = alt.Chart(risk_profile_data).mark_bar().encode(
+            x=alt.X('RISK_LEVEL:N', title='Risk Level'),
+            y=alt.Y('AVG_PORTFOLIO:Q', title='Average Portfolio Value'),
+            color=alt.Color('CUSTOMER_TYPE:N', title='Customer Type'),
+            column=alt.Column('CUSTOMER_TYPE:N'),
+            tooltip=['RISK_LEVEL', 'CUSTOMER_TYPE', 'AVG_PORTFOLIO', 'CUSTOMERS']
+        ).properties(
+            title="Portfolio Size by Risk & Customer Type",
+            width=150,
+            height=200
         )
-        st.plotly_chart(fig_risk_portfolio, use_container_width=True)
+        st.altair_chart(fig_risk_portfolio, use_container_width=True)
     
     with col2:
         # Risk vs Diversification
-        fig_risk_div = px.bar(
-            risk_profile_data,
-            x='RISK_LEVEL',
-            y='AVG_DIVERSIFICATION',
-            color='CUSTOMER_TYPE',
-            title="Average Diversification by Risk Level & Customer Type",
-            barmode='group'
+        fig_risk_div = alt.Chart(risk_profile_data).mark_circle(size=100).encode(
+            x=alt.X('AVG_DIVERSIFICATION:Q', title='Average Diversification'),
+            y=alt.Y('AVG_PORTFOLIO:Q', title='Average Portfolio Value'),
+            color=alt.Color('RISK_LEVEL:N', title='Risk Level'),
+            size=alt.Size('CUSTOMERS:Q', title='Customer Count'),
+            tooltip=['RISK_LEVEL', 'CUSTOMER_TYPE', 'AVG_PORTFOLIO', 'AVG_DIVERSIFICATION', 'CUSTOMERS']
+        ).properties(
+            title="Portfolio Value vs Diversification by Risk Level",
+            width=400,
+            height=300
         )
-        st.plotly_chart(fig_risk_div, use_container_width=True)
+        st.altair_chart(fig_risk_div, use_container_width=True)
+
+# Investment Capacity Analysis
+st.header("💰 Investment Capacity Analysis")
+
+capacity_analysis_query = f"""
+SELECT 
+    INVESTMENT_CAPACITY,
+    RISK_LEVEL,
+    COUNT(*) as customer_count,
+    AVG(ABS(NET_INVESTMENT)) as avg_portfolio_value,
+    AVG(TOTAL_TRANSACTIONS) as avg_transactions
+FROM MART_CUSTOMER_PORTFOLIO
+WHERE {customer_filter} AND {risk_filter}
+GROUP BY INVESTMENT_CAPACITY, RISK_LEVEL
+ORDER BY avg_portfolio_value DESC
+"""
+
+capacity_analysis = run_query(capacity_analysis_query)
+
+if not capacity_analysis.empty:
+    # Stacked bar chart for investment capacity
+    fig_capacity = alt.Chart(capacity_analysis).mark_bar().encode(
+        x=alt.X('INVESTMENT_CAPACITY:N', title='Investment Capacity', sort='-y'),
+        y=alt.Y('AVG_PORTFOLIO_VALUE:Q', title='Average Portfolio Value'),
+        color=alt.Color('RISK_LEVEL:N', title='Risk Level'),
+        tooltip=['INVESTMENT_CAPACITY', 'RISK_LEVEL', 'CUSTOMER_COUNT', 'AVG_PORTFOLIO_VALUE']
+    ).properties(
+        title="Portfolio Value by Investment Capacity & Risk Level",
+        width=600,
+        height=400
+    )
+    st.altair_chart(fig_capacity, use_container_width=True)
