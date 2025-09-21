@@ -1,0 +1,516 @@
+name: CUSTOMER_360_SEMANTICS
+tables:
+  - name: INT_ASSET_DAILY_METRICS
+    synonyms:
+      - INT_ASSET_DAILY_PERFORMANCE
+      - DAILY_INTERNATIONAL_ASSET_METRICS
+      - INTERNATIONAL_ASSET_DAILY_DATA
+      - INT_ASSET_DAILY_STATS
+    description: This table stores daily metrics for international assets, including their current and previous closing prices, daily return, and categorization information such as asset name, category, sub-category, sector, and industry, with data tracked by ISIN (International Securities Identification Number) and date.
+    base_table:
+      database: FAR_TRANS_DB
+      schema: INTERMEDIATE
+      table: INT_ASSET_DAILY_METRICS
+    dimensions:
+      - name: ASSET_CATEGORY
+        description: The type of investment or financial instrument being tracked, such as a stock or bond.
+        expr: ASSET_CATEGORY
+        data_type: VARCHAR(50)
+        sample_values:
+          - Stock
+          - Bond
+          - MTF
+      - name: ASSET_NAME
+        description: The name of the asset being tracked, including the full name and ticker symbol, as well as the country or region where the asset is listed.
+        expr: ASSET_NAME
+        data_type: VARCHAR(255)
+        sample_values:
+          - iShares Core MSCI World UCITS ETF USD (Acc) | IWDA
+          - FRIGOGLASS S.A.(CR)
+          - JUMBO S.A. (CR)
+      - name: ASSET_SUB_CATEGORY
+        description: The type of asset being measured, such as Equity (e.g. stocks) or Government (e.g. bonds).
+        expr: ASSET_SUB_CATEGORY
+        data_type: VARCHAR(50)
+        sample_values:
+          - Equity
+          - Government
+          - Balanced
+      - name: INDUSTRY
+        description: The industry or sector in which the asset operates, such as publishing or marine shipping.
+        expr: INDUSTRY
+        data_type: VARCHAR(100)
+        sample_values:
+          - Publishing
+          - Marine Shipping
+          - Packaging & Containers
+      - name: ISIN
+        description: International Securities Identification Number uniquely identifying the financial instrument.
+        expr: ISIN
+        data_type: VARCHAR(12)
+        sample_values:
+          - GRS346003007
+          - GRS282183003
+          - FR0000120271
+      - name: SECTOR
+        description: The sector classification of the asset, representing the general industry or market category to which it belongs.
+        expr: SECTOR
+        data_type: VARCHAR(100)
+        sample_values:
+          - Sovereign
+          - Communication Services
+          - Consumer Cyclical
+    time_dimensions:
+      - name: PRICE_DATE
+        description: Date on which the asset's price was recorded.
+        expr: PRICE_DATE
+        data_type: TIMESTAMP_NTZ(9)
+        sample_values:
+          - 2018-06-21T00:00:00.000+0000
+          - 2018-10-19T00:00:00.000+0000
+          - 2018-11-13T00:00:00.000+0000
+    facts:
+      - name: CLOSE_PRICE
+        description: The closing price of an asset on a given day, representing the last traded price of the asset at the end of the trading day.
+        expr: CLOSE_PRICE
+        data_type: NUMBER(20,4)
+        access_modifier: public_access
+        sample_values:
+          - '0.5500'
+          - '0.5000'
+          - '0.5350'
+      - name: DAILY_RETURN
+        description: The daily return percentage calculated as the change in price from the previous trading day.
+        expr: DAILY_RETURN
+        data_type: NUMBER(38,10)
+        access_modifier: public_access
+        sample_values:
+          - '0.0192307692'
+          - '-0.0654205607'
+          - '0.0288461538'
+      - name: PREV_CLOSE_PRICE
+        description: The previous day's closing price of an asset.
+        expr: PREV_CLOSE_PRICE
+        data_type: NUMBER(20,4)
+        access_modifier: public_access
+        sample_values:
+          - '0.5000'
+          - '0.5350'
+          - '0.5200'
+    primary_key:
+      columns:
+        - ISIN
+        - ASSET_NAME
+  - name: INT_CUSTOMER_TRANSACTIONS
+    synonyms:
+      - customer_transactions
+      - customer_activity
+      - transaction_history
+      - client_deals
+      - investment_records
+      - trade_log
+      - customer_ledger
+      - financial_transactions
+      - account_activity
+    description: This table stores information about individual transactions made by customers, including details about the transaction itself, the customer's profile, and the investment being transacted.
+    base_table:
+      database: FAR_TRANS_DB
+      schema: INTERMEDIATE
+      table: INT_CUSTOMER_TRANSACTIONS
+    dimensions:
+      - name: ASSET_CATEGORY
+        description: The type of financial instrument or asset class associated with a customer's transaction, such as a Money Market Fund (MTF), Stock, or Bond.
+        expr: ASSET_CATEGORY
+        data_type: VARCHAR(50)
+        sample_values:
+          - MTF
+          - Stock
+          - Bond
+      - name: ASSET_NAME
+        description: The name of the asset or company involved in the customer transaction.
+        expr: ASSET_NAME
+        data_type: VARCHAR(255)
+        sample_values:
+          - FRIGOGLASS S.A.(CR)
+          - SATO OFFICE AND HOUSEWARE SUPPLIES S.A. (CR)
+          - JUMBO S.A. (CR)
+      - name: CHANNEL
+        description: The channel through which the customer executed the transaction.
+        expr: CHANNEL
+        data_type: VARCHAR(50)
+        sample_values:
+          - Internet Banking
+          - Mobile App
+          - Branch
+      - name: CUSTOMER_ID
+        description: Unique identifier for the customer who made the transaction.
+        expr: CUSTOMER_ID
+        data_type: VARCHAR(50)
+        sample_values:
+          - 456AD1BCC4A204F1633E
+          - 4424DBB165C46DAFB06B
+          - CCA588D236EC5B888EA7
+      - name: CUSTOMER_TYPE
+        description: The type of customer, which can be Premium, Mass, or Professional based on their investment profile and relationship with the firm.
+        expr: CUSTOMER_TYPE
+        data_type: VARCHAR(50)
+        sample_values:
+          - Premium
+          - Mass
+          - Professional
+      - name: ISIN
+        description: International Securities Identification Number for the traded asset.
+        expr: ISIN
+        data_type: VARCHAR(12)
+        sample_values:
+          - GRS346003007
+          - GRS282183003
+          - US0378331005
+      - name: RISK_LEVEL
+        description: The risk tolerance level of the customer, indicating their investment approach and appetite for risk.
+        expr: RISK_LEVEL
+        data_type: VARCHAR(50)
+        sample_values:
+          - Income
+          - Balanced
+          - Growth
+      - name: SECTOR
+        description: The sector in which the asset operates, categorizing the primary business activity or industry.
+        expr: SECTOR
+        data_type: VARCHAR(100)
+        sample_values:
+          - Technology
+          - Healthcare
+          - Financial Services
+      - name: TRANSACTION_ID
+        description: Unique identifier for each customer transaction.
+        expr: TRANSACTION_ID
+        data_type: VARCHAR(50)
+        sample_values:
+          - '8768226'
+          - '7624577'
+          - '6646791'
+      - name: TRANSACTION_TYPE
+        description: The type of transaction made by the customer, either a sale (Sell) or a purchase (Buy).
+        expr: TRANSACTION_TYPE
+        data_type: VARCHAR(20)
+        sample_values:
+          - Sell
+          - Buy
+    time_dimensions:
+      - name: TRANSACTION_DATE
+        description: Date and time when the customer transaction occurred.
+        expr: TRANSACTION_DATE
+        data_type: TIMESTAMP_NTZ(9)
+        sample_values:
+          - 2019-11-14T00:00:00.000+0000
+          - 2021-10-29T00:00:00.000+0000
+          - 2021-03-23T00:00:00.000+0000
+    facts:
+      - name: TOTAL_VALUE
+        description: The total monetary value of a customer's transaction.
+        expr: TOTAL_VALUE
+        data_type: NUMBER(20,4)
+        access_modifier: public_access
+        sample_values:
+          - '1375.0000'
+          - '633.4622'
+          - '960.0000'
+      - name: UNITS
+        description: The quantity of units traded in the transaction.
+        expr: UNITS
+        data_type: NUMBER(20,4)
+        access_modifier: public_access
+        sample_values:
+          - '660.0000'
+          - '1916.5160'
+          - '1813.9380'
+    primary_key:
+      columns:
+        - CUSTOMER_ID
+  - name: MART_ASSET_PERFORMANCE
+    synonyms:
+      - asset_performance
+      - investment_performance
+      - market_data
+      - financial_performance
+      - asset_returns
+      - market_returns
+      - investment_returns
+      - portfolio_performance
+      - asset_market_data
+    description: This table stores historical performance metrics for various financial assets, including stocks, bonds, and other securities. It captures key attributes such as asset name, category, and sector, as well as trading history, including first and last trading dates, minimum and maximum prices, average price, average daily return, daily volatility, and number of trading days.
+    base_table:
+      database: FAR_TRANS_DB
+      schema: MARTS
+      table: MART_ASSET_PERFORMANCE
+    dimensions:
+      - name: ASSET_CATEGORY
+        description: The type of investment or financial instrument being tracked, such as stocks or mutual fund trusts (MTFs).
+        expr: ASSET_CATEGORY
+        data_type: VARCHAR(50)
+        sample_values:
+          - Stock
+          - MTF
+          - Bond
+      - name: ASSET_NAME
+        description: The name of the asset or company being tracked for performance metrics.
+        expr: ASSET_NAME
+        data_type: VARCHAR(255)
+        sample_values:
+          - MEVACO S.A. (CR)
+          - KIRIACOULIS SHIPPING S.A. (CR)
+          - AngloGold Ashanti Holdings
+      - name: ASSET_SUB_CATEGORY
+        description: The type of investment or asset class within a broader category, such as Corporate or Bond, that provides a more specific classification of the asset's characteristics and risk profile.
+        expr: ASSET_SUB_CATEGORY
+        data_type: VARCHAR(50)
+        sample_values:
+          - Corporate
+          - Bond
+          - Equity
+      - name: INDUSTRY
+        description: The industry classification of the asset, representing the sector or category to which the asset belongs.
+        expr: INDUSTRY
+        data_type: VARCHAR(100)
+        sample_values:
+          - Miscellaneous Machinery and Industrial Equipment
+          - Publishing
+          - Equipment and Services for Oil and Gas Extraction
+      - name: ISIN
+        description: International Securities Identification Number uniquely identifying the financial instrument.
+        expr: ISIN
+        data_type: VARCHAR(12)
+        sample_values:
+          - GRS346003007
+          - GRS282183003
+          - US0378331005
+      - name: SECTOR
+        description: The sector or industry classification of the asset, such as Communication Services or Corporate, which provides a high-level categorization of the asset's business or economic activity.
+        expr: SECTOR
+        data_type: VARCHAR(100)
+        sample_values:
+          - Communication Services
+          - Corporate
+          - Technology
+    time_dimensions:
+      - name: FIRST_TRADING_DATE
+        description: The date when the asset was first traded.
+        expr: FIRST_TRADING_DATE
+        data_type: TIMESTAMP_NTZ(9)
+        sample_values:
+          - 2022-07-07T00:00:00.000+0000
+          - 2020-04-16T00:00:00.000+0000
+          - 2018-01-03T00:00:00.000+0000
+      - name: LAST_TRADING_DATE
+        description: The date of the last trading activity for the asset.
+        expr: LAST_TRADING_DATE
+        data_type: TIMESTAMP_NTZ(9)
+        sample_values:
+          - 2019-06-11T00:00:00.000+0000
+          - 2019-09-03T00:00:00.000+0000
+          - 2021-10-08T00:00:00.000+0000
+    facts:
+      - name: AVG_DAILY_RETURN
+        description: The average daily return percentage for the asset over the tracking period.
+        expr: AVG_DAILY_RETURN
+        data_type: NUMBER(38,10)
+        access_modifier: public_access
+        sample_values:
+          - '0.0012345678'
+          - '-0.0023456789'
+          - '0.0034567890'
+      - name: AVG_PRICE
+        description: The average price of an asset over a specific period of time, likely used to track and analyze the performance of the asset.
+        expr: AVG_PRICE
+        data_type: NUMBER(38,10)
+        access_modifier: public_access
+        sample_values:
+          - '143.5071201964'
+          - '103.0021304054'
+          - '9.9817439024'
+      - name: DAILY_VOLATILITY
+        description: The standard deviation of daily returns, measuring the asset's price volatility and risk.
+        expr: DAILY_VOLATILITY
+        data_type: NUMBER(38,10)
+        access_modifier: public_access
+        sample_values:
+          - '0.0234567890'
+          - '0.0345678901'
+          - '0.0123456789'
+      - name: MAX_PRICE
+        description: The maximum price of an asset during a given time period.
+        expr: MAX_PRICE
+        data_type: NUMBER(20,4)
+        access_modifier: public_access
+        sample_values:
+          - '55.3400'
+          - '2.5600'
+          - '10.5338'
+      - name: MIN_PRICE
+        description: The minimum price of the asset.
+        expr: MIN_PRICE
+        data_type: NUMBER(20,4)
+        access_modifier: public_access
+        sample_values:
+          - '83.7352'
+          - '148.4200'
+          - '0.5300'
+      - name: TRADING_DAYS
+        description: The total number of trading days for which the asset has price data.
+        expr: TRADING_DAYS
+        data_type: NUMBER(18,0)
+        access_modifier: public_access
+        sample_values:
+          - '1250'
+          - '890'
+          - '456'
+    primary_key:
+      columns:
+        - ISIN
+        - ASSET_NAME
+  - name: MART_CUSTOMER_PORTFOLIO
+    synonyms:
+      - customer_portfolio
+      - customer_investments
+      - portfolio_summary
+      - customer_asset_summary
+      - investment_portfolio
+      - customer_transaction_history
+    description: This table stores customer portfolio information, providing a comprehensive view of each customer's investment activities, including their risk level, investment capacity, transaction history, asset holdings, and investment performance.
+    base_table:
+      database: FAR_TRANS_DB
+      schema: MARTS
+      table: MART_CUSTOMER_PORTFOLIO
+    dimensions:
+      - name: CUSTOMER_ID
+        description: Unique identifier for a customer in the portfolio.
+        expr: CUSTOMER_ID
+        data_type: VARCHAR(50)
+        sample_values:
+          - 1685597EC75965D00D82
+          - 332F42B2B27CA6353B5B
+          - FF125DC7A5FBCFA740D1
+      - name: CUSTOMER_TYPE
+        description: The type of customer based on their purchase behavior and loyalty, categorized as Premium (high-value customers), Professional (business customers), or Mass (standard retail customers).
+        expr: CUSTOMER_TYPE
+        data_type: VARCHAR(50)
+        sample_values:
+          - Premium
+          - Professional
+          - Mass
+      - name: INVESTMENT_CAPACITY
+        description: The investment capacity bracket indicating the customer's financial ability to invest.
+        expr: INVESTMENT_CAPACITY
+        data_type: VARCHAR(50)
+        sample_values:
+          - Predicted_CAP_LT30K
+          - CAP_30K_80K
+          - CAP_80K_300K
+      - name: RISK_LEVEL
+        description: The risk tolerance level of a customer's investment portfolio, categorized as Income (conservative), Balanced (moderate risk), or Growth (higher risk tolerance).
+        expr: RISK_LEVEL
+        data_type: VARCHAR(50)
+        sample_values:
+          - Income
+          - Balanced
+          - Growth
+    time_dimensions:
+      - name: FIRST_TRANSACTION_DATE
+        description: The date and time when a customer made their first purchase or transaction.
+        expr: FIRST_TRANSACTION_DATE
+        data_type: TIMESTAMP_NTZ(9)
+        sample_values:
+          - 2018-10-19T00:00:00.000+0000
+          - 2021-10-29T00:00:00.000+0000
+          - 2018-11-13T00:00:00.000+0000
+      - name: LAST_TRANSACTION_DATE
+        description: The date of the customer's most recent transaction.
+        expr: LAST_TRANSACTION_DATE
+        data_type: TIMESTAMP_NTZ(9)
+        sample_values:
+          - 2020-06-16T00:00:00.000+0000
+          - 2020-03-31T00:00:00.000+0000
+          - 2019-11-14T00:00:00.000+0000
+    facts:
+      - name: ASSET_CATEGORIES_TRADED
+        description: The number of different asset categories that a customer has traded.
+        expr: ASSET_CATEGORIES_TRADED
+        data_type: NUMBER(18,0)
+        access_modifier: public_access
+        sample_values:
+          - '1'
+          - '2'
+          - '3'
+      - name: NET_INVESTMENT
+        description: The total amount of money invested by a customer in their portfolio, which can be positive (indicating net purchases) or negative (indicating net sales).
+        expr: NET_INVESTMENT
+        data_type: NUMBER(32,4)
+        access_modifier: public_access
+        sample_values:
+          - '-81.3740'
+          - '-6759.5000'
+          - '39999.9915'
+      - name: SECTORS_INVESTED
+        description: The number of different sectors in which a customer has invested.
+        expr: SECTORS_INVESTED
+        data_type: NUMBER(18,0)
+        access_modifier: public_access
+        sample_values:
+          - '1'
+          - '2'
+          - '3'
+      - name: TOTAL_PURCHASES
+        description: The total amount spent by a customer across all their purchases.
+        expr: TOTAL_PURCHASES
+        data_type: NUMBER(32,4)
+        access_modifier: public_access
+        sample_values:
+          - '9999.9975'
+          - '210395.3086'
+          - '100.0000'
+      - name: TOTAL_SALES
+        description: The total sales amount generated by each customer in the portfolio.
+        expr: TOTAL_SALES
+        data_type: NUMBER(32,4)
+        access_modifier: public_access
+        sample_values:
+          - '3.3500'
+          - '4673.0183'
+          - '1092.0800'
+      - name: TOTAL_TRANSACTIONS
+        description: The total number of transactions made by a customer across all their accounts and channels.
+        expr: TOTAL_TRANSACTIONS
+        data_type: NUMBER(18,0)
+        access_modifier: public_access
+        sample_values:
+          - '469'
+          - '29'
+          - '251'
+      - name: UNIQUE_ASSETS
+        description: The number of unique assets held by a customer in their investment portfolio.
+        expr: UNIQUE_ASSETS
+        data_type: NUMBER(18,0)
+        access_modifier: public_access
+        sample_values:
+          - '1'
+          - '2'
+          - '4'
+    primary_key:
+      columns:
+        - CUSTOMER_ID
+relationships:
+  - left_table: MART_CUSTOMER_PORTFOLIO
+    relationship_columns:
+      - left_column: CUSTOMER_ID
+        right_column: CUSTOMER_ID
+    right_table: INT_CUSTOMER_TRANSACTIONS
+    name: Customer_Portfolio_Transactions
+  - name: ASSET_PERFORMANCE_DAILYMETRICS
+    left_table: MART_ASSET_PERFORMANCE
+    relationship_columns:
+      - left_column: ISIN
+        right_column: ISIN
+      - left_column: ASSET_NAME
+        right_column: ASSET_NAME
+    right_table: INT_ASSET_DAILY_METRICS
