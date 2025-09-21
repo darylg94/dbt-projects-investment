@@ -1,12 +1,8 @@
-# Environment file for Streamlit in Snowflake
-# Uses only Snowflake Anaconda Channel packages
+# Minimal environment for Streamlit in Snowflake
+# Uses only pre-installed packages
 
 name: customer_360_analytics
 channels:
   - snowflake
 dependencies:
-  - python=3.11
-  - streamlit=1.46.1
-  - pandas=2.1.3
-  - numpy=1.24.3
-  - altair=5.1.2
+  - python=3.10
