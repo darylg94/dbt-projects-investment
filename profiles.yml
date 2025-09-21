@@ -12,7 +12,7 @@ dbt_investment_FAR_TRANS:
       role: FAR_TRANS_DBT_ROLE
       database: FAR_TRANS_DB
       warehouse: FAR_TRANS_WH
-      schema: RAW
+      schema: public
       
       # Connection parameters
       threads: 4
@@ -31,7 +31,7 @@ dbt_investment_FAR_TRANS:
       role: FAR_TRANS_DBT_ROLE
       database: FAR_TRANS_DB
       warehouse: FAR_TRANS_WH
-      schema: RAW
+      schema: public
       
       # Connection parameters
       threads: 8
